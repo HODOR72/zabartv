@@ -38,7 +38,7 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 	const convertPrice = () => (isMonthPackage ? priceInYear : priceInMonth).toFixed(0);
 
 	const { t } = useTranslation();
-
+	console.log(t('subscribe_button'));
 	return (
 		<>
 			{visible ? (

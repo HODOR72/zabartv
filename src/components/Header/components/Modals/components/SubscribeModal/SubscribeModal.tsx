@@ -16,7 +16,7 @@ export const SubscribeModal = () => {
 	const { t } = useTranslation();
 
 	const { ModalTitle, ModalDesc, ModalButton } = Modal;
-
+	console.log(t('subscribe_button'));
 	return (
 		<Modal variant="gradient" open={isVisibleSubscribeModal} onClose={handleClose}>
 			<ModalTitle>Подписка ZabarTV</ModalTitle>

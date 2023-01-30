@@ -11,7 +11,6 @@ import { Provider } from 'react-redux';
 
 function MyApp({ Component, ...rest }: AppProps) {
 	const { store, props } = wrapper.useWrappedStore(rest);
-	console.log('updated3')
 
 	return (
 		<Provider store={store}>
