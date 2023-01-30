@@ -19,8 +19,8 @@ const MoviePage: NextPage = () => {
 export const getServerSideProps = wrapper.getServerSideProps(
 	({ dispatch }) =>
 		async ({ query: { slug }, locale }) => {
+			console.log(1);
 			await baseApi.setLang(locale as string);
-
 			if (locale) {
 				await dispatch(getNavMenu());
 				await dispatch(getFooterMenu());

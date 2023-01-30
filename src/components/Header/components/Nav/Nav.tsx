@@ -21,7 +21,7 @@ export const Nav: FC<NavProps> = ({ className }) => {
 						<li key={id} className={styles.item}>
 							<NextLink
 								href={
-									slug === 'about' || slug === 'cartoons'
+									slug === 'about' || slug === 'cartoons' || slug === 'tv'
 										? `/${slug}`
 										: `/page/${slug}`
 								}

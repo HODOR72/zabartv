@@ -14,4 +14,4 @@ export type AppDispatch = Store['dispatch'];
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 export type NextThunkDispatch = ThunkDispatch<AppDispatch, void, AnyAction>;
 
-export const wrapper = createWrapper(makeStore, { debug: false });
+export const wrapper = createWrapper(makeStore, { debug: true });
