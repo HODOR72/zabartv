@@ -133,9 +133,13 @@ export const RegisterModal = () => {
 							);
 						}}
 					/>
-					{errorMessages ? (
-						<ModalErrorMessage>Не удалось зарегистрироваться</ModalErrorMessage>
-					) : null}
+					{errorMessages?.length > 0
+						? errorMessages?.map((error) => (
+								<ModalErrorMessage key={error}>
+									Не удалось зарегистрироваться
+								</ModalErrorMessage>
+						  ))
+						: null}
 				</ModalInputs>
 				<ModalButton spinner={isLoading}>Зарегистрироваться</ModalButton>
 			</form>
