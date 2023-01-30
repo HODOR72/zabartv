@@ -32,7 +32,6 @@ export const Cartoons = () => {
 				),
 			};
 		}) || [];
-	console.log(newFilms);
 	return (
 		<Category>
 			<Category.Title>{content?.title_in_nav}</Category.Title>

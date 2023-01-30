@@ -3,25 +3,26 @@ import { getFooterMenu, getNavMenu } from './thunks';
 
 interface IMenuItem {
 	[x: string]: void;
-	id: number;
-	link_type: number;
-	link_type_name: string;
-	customer_group: number;
-	slug: string;
-	old_slug: string;
-	link: string;
-	class: string;
-	icon: string;
-	badge: string;
-	full_link: string;
+	id: any;
+	link_type: any;
+	link_type_name: any;
+	customer_group: any;
+	slug: any;
+	old_slug: any;
+	link: any;
+	class: any;
+	icon: any;
+	badge: any;
+	full_link: any;
+	// @ts-ignore
 	content: {
-		title_in_nav: string;
+		title_in_nav: any;
 	};
 }
 
 interface IState {
 	isOpened: boolean;
-	navMenu: IMenuItem[] | [];
+	navMenu: IMenuItem[] | [] ;
 	footerMenu: IMenuItem[] | [];
 }
 
@@ -40,7 +41,7 @@ export const menuSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		[getNavMenu.fulfilled.type]: (state, action: PayloadAction<IMenuItem[]>) => {
+		[getNavMenu.fulfilled.type]: (state, action: PayloadAction<IMenuItem[]> | any) => {
 			state.navMenu = action.payload;
 		},
 		[getFooterMenu.fulfilled.type]: (state, action: PayloadAction<IMenuItem[]>) => {

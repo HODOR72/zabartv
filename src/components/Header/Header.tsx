@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Nav, ThemeToggle, Lang, Actions, Search, Menu, Burger, Modals } from './components/index';
+import { Nav, ThemeToggle, Lang, Search, Menu, Burger, Modals } from './components/index';
 import { SubscribeButton } from '@/UI/SubscribeButton/SubscribeButton';
 import { LogoIcon } from '@/icons';
 import dynamic from 'next/dynamic';
