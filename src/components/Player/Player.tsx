@@ -32,6 +32,8 @@ export const Player = () => {
 		}
 	}, [isVisiblePlayer]);
 
+	console.log(url)
+
 	return (
 		<>
 			{isVisiblePlayer && (
@@ -44,7 +46,7 @@ export const Player = () => {
 					>
 						<CloseIcon />
 					</ButtonBase>
-					{url.includes('player') ? (
+					{!url.includes('zabar') ? (
 						<iframe src={url} name="iframe_a" className={styles.iframe} />
 					) : (
 						<Plyr

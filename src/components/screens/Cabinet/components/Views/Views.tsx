@@ -10,7 +10,7 @@ interface ViewsProps {
 }
 
 export const Views: FC<ViewsProps> = ({ viewed }) => {
-	const isNotEpty = viewed && viewed?.length > 0;
+	const isNotEmpty = viewed && viewed?.length > 0;
 	const { t } = useTranslation();
 
 	const ViewsList = (
@@ -29,5 +29,5 @@ export const Views: FC<ViewsProps> = ({ viewed }) => {
 		</Title>
 	);
 
-	return isNotEpty ? ViewsList : EmptyTitle;
+	return isNotEmpty ? ViewsList : EmptyTitle;
 };

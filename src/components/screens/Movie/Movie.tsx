@@ -19,11 +19,9 @@ import getShowTimeMovie from '@/utils/getShowTimeMovie';
 import axios from '@/utils/axios';
 //
 import styles from './Movie.module.scss';
-import { useRouter } from 'next/router';
 
 export const Movie = () => {
-	const { data } = useTypedSelector((state) => state.movie);
-	console.log(data);
+	const { data } = useTypedSelector((state:any) => state.movie);
 	const { openPlayer, setUrl } = useTypedActions((state) => state.player);
 
 	const {
@@ -47,7 +45,6 @@ export const Movie = () => {
 	const categories = catalogs?.map((cat: ICatalog) => {
 		return cat.content.title_in_nav;
 	});
-	console.log(parts)
 
 	const image = `${img_base_url}/${img_path}`;
 
