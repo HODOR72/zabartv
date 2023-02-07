@@ -23,7 +23,7 @@ export const getStaticProps = wrapper.getStaticProps(({ dispatch }) => async ({ 
 		await dispatch(getIP());
 		await dispatch(getNavMenu());
 		await dispatch(getFooterMenu());
-		await dispatch(getCategory('cartoons'));
+				await dispatch(getCategory('cartoons'));
 	} else {
 		await dispatch(getIP());
 		await dispatch(getNavMenu());

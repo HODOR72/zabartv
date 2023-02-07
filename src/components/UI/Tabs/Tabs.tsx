@@ -5,10 +5,6 @@ import classNames from 'classnames';
 
 import styles from './Tabs.module.scss';
 import axios from '@/utils/axios';
-import { Grid } from '@/UI/Grid/Grid';
-import { MovieItem } from '@/UI/MovieItem/MovieItem';
-import Image from 'next/image';
-import { ArrowIcon } from '@/icons';
 
 export type TabItem = {
 	txt: string;
@@ -33,6 +29,7 @@ const getStoreLocal = (name: string) => {
 
 export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 	// ${tabs[0].txt - unique identificator
+
 	const [activeTab, setActiveTab] = useState(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
 	const [totalPages, setTotalPages] = useState<any>({});
 	const [currentPage, setCurrentPage] = useState<any>({});
@@ -40,13 +37,17 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			setActiveTab(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
+			if (tabs[0].txt !== 'Настройки') {
+				setActiveTab(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
+			}
 		}, 1000);
 	}, []);
 
 	const handleChangeCategory = async (id: any) => {
 		setActiveTab(id);
-		localStorage.setItem(`lastCategory-${tabs[0].txt}`, String(id));
+		if (tabs[0].txt !== 'Настройки') {
+			localStorage.setItem(`lastCategory-${tabs[0].txt}`, String(id));
+		}
 	};
 
 	const handleShowMore = async (id: any) => {
@@ -100,7 +101,8 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 				</TabList>
 			</div>
 			{tabs.map((el: TabItem) => {
-				const { txt, content, id, condition = true } = el;
+				let { txt, content, id, condition = true } = el;
+
 				const currPage = id && currentPage[id] ? currentPage[id] : 1;
 				return (
 					<Fragment key={txt}>
@@ -108,7 +110,9 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 							<TabPanel>
 								{content}
 								{/* @ts-ignore */}
-								{content?.props?.items && content?.props?.items.length > 11 &&
+								{content?.props?.items &&
+									//@ts-ignore
+									content?.props?.items.length > 11 &&
 									(id && totalPages[id]
 										? totalPages[id] > currPage
 										: 2 > currPage) && (

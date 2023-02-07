@@ -20,13 +20,6 @@ export const Cabinet = () => {
 	const { data, isLoading, viewed, favorites } = useTypedSelector((state) => state.user);
 	const { logout } = useTypedActions((state) => state.auth);
 
-	/* временно */
-	const USER_INFO = {
-		title: '30 дней за',
-		price: '12€',
-		desc: 'Следующая оплата 22.09.22',
-	};
-
 	const USER_TABS = [
 		{ txt: 'Настройки', content: <Settings data={data} /> },
 		{ txt: 'Избранное', content: <Favourites favorites={favorites?.items!} /> },
@@ -55,8 +48,6 @@ export const Cabinet = () => {
 	};
 
 	const logoutUser = async () => {
-		// await axios.get('/session/logout');
-
 		logout();
 		push(RoutesEnum.Home);
 	};
@@ -70,7 +61,6 @@ export const Cabinet = () => {
 
 			isAuth ? fetchData() : push(RoutesEnum.Home);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -90,7 +80,6 @@ export const Cabinet = () => {
 							</Link>
 						</div>
 					</div>
-					{/* <SubscribeInfo info={USER_INFO} /> */}
 				</div>
 				<Tabs className={styles.tabs} tabs={USER_TABS} />
 			</div>

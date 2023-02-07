@@ -24,7 +24,9 @@ export const Purchases = () => {
 		});
 
 	const { t } = useTranslation();
-	console.log(t('No purchases'));
+	let tr = t('No purchases');
+	console.log(tr)
+
 	return (
 		<>
 			{history &&

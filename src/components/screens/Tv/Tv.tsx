@@ -23,7 +23,7 @@ export const Tv = () => {
 						renderItem={(el) => {
 							const item = el[0];
 
-							return <MovieItem href={`/tv/${item.slug}`} item={item} />;
+							return <MovieItem href={`/tv/${item?.slug}`} item={item} />;
 						}}
 					/>
 				),
