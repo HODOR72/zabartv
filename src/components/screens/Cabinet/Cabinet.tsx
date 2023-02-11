@@ -14,11 +14,13 @@ import { getFooterMenu, getNavMenu } from '@/reducers/menu/thunks';
 import { baseApi } from '@/api';
 import classNames from 'classnames';
 import styles from './Cabinet.module.scss';
+import { useTranslation } from 'next-i18next';
 
 export const Cabinet = () => {
 	const { push, locale } = useRouter();
 	const { data, isLoading, viewed, favorites } = useTypedSelector((state) => state.user);
 	const { logout } = useTypedActions((state) => state.auth);
+	const { t } = useTranslation();
 
 	const USER_TABS = [
 		{ txt: 'Настройки', content: <Settings data={data} /> },
@@ -76,7 +78,7 @@ export const Cabinet = () => {
 								<span className={styles.mailText}>{data.email}</span>
 							</span>
 							<Link onClick={logoutUser} className={styles.logout} as={'button'}>
-								Выйти
+								{t('Exit')}
 							</Link>
 						</div>
 					</div>

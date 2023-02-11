@@ -4,6 +4,7 @@ const nextConfig = {
 	experimental: {
 		images: {
 			unoptimized: true,
+			layoutRaw: true,
 		},
 	},
 	i18n,

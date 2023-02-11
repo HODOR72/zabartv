@@ -37,7 +37,7 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			if (tabs[0].txt !== 'Настройки') {
+			if (tabs[0]?.txt !== 'Настройки') {
 				setActiveTab(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
 			}
 		}, 1000);
@@ -45,7 +45,7 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 
 	const handleChangeCategory = async (id: any) => {
 		setActiveTab(id);
-		if (tabs[0].txt !== 'Настройки') {
+		if (tabs[0]?.txt !== 'Настройки') {
 			localStorage.setItem(`lastCategory-${tabs[0].txt}`, String(id));
 		}
 	};

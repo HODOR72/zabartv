@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 //
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
@@ -20,7 +20,7 @@ interface SubscribeCardProps {
 }
 
 export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
-	const { showSubscriptionModal } = useTypedActions((state: any) => state.modal)
+	const { showSubscriptionModal } = useTypedActions((state: any) => state.modal);
 
 	const {
 		content: { title, badge_1 },
@@ -28,7 +28,6 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 		period,
 		visible,
 	} = card;
-	showSubscriptionModal(true)
 
 	const normalPrice = Number(price);
 	const isMonthPackage = period <= 30;
@@ -38,7 +37,11 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 	const convertPrice = () => (isMonthPackage ? priceInYear : priceInMonth).toFixed(0);
 
 	const { t } = useTranslation();
-	console.log(t('subscribe_button'));
+
+	const handleSend = () => {
+		showSubscriptionModal(true);
+		localStorage.setItem('packet', isMonthPackage ? '1' : '2');
+	};
 	return (
 		<>
 			{visible ? (
@@ -59,7 +62,12 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 					{isMonthPackage && (
 						<Counter className={styles.counter} initialValue={30} caption="Дней" />
 					)}
-					<Button onClick={() => showSubscriptionModal(true)} variant="gradient" className={styles.btn} icon={<SubscribeIcon />}>
+					<Button
+						onClick={handleSend}
+						variant="gradient"
+						className={styles.btn}
+						icon={<SubscribeIcon />}
+					>
 						{t('subscribe_button')}
 					</Button>
 					{badge_1 && <span className={styles.badge}>{badge_1}</span>}

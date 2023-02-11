@@ -1,6 +1,6 @@
 import { ButtonBase } from '@/components/ButtonBase/ButtonBase';
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './Counter.module.scss';
 
 interface CounterProps {
@@ -11,6 +11,10 @@ interface CounterProps {
 
 export const Counter: FC<CounterProps> = ({ initialValue, caption, className }) => {
 	const [value, setValue] = useState<number>(initialValue);
+
+	useEffect(() => {
+		localStorage.setItem('counter', String(value));
+	}, [value]);
 
 	const handleDecrement = () => setValue(value - initialValue);
 	const handleIncrement = () => setValue(value + initialValue);

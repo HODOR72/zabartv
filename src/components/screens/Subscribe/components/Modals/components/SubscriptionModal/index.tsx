@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // hooks
 import { useTypedActions } from '@/hooks/useTypedActions';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
@@ -17,6 +17,8 @@ import MasterCardVisa from '../../../../../../Icons/VisaMS.png';
 
 const SubscriptionModal = () => {
 	const [paymentMethod, setPaymentMethod] = useState<string>('card');
+	const [value, setValue] = useState<number>(0);
+	const [packageId, setPackageId] = useState<number>(0);
 
 	const { isVisibleSubscriptionModal } = useTypedSelector((state: any) => state.modal);
 
@@ -25,6 +27,7 @@ const SubscriptionModal = () => {
 	const handleClose = () => showSubscriptionModal(false);
 	const { push } = useRouter();
 	const { ModalTitle, ModalDesc, ModalButton } = Modal;
+
 	const buySubscription = async () => {
 		try {
 			const { data } = await axios({
@@ -46,6 +49,16 @@ const SubscriptionModal = () => {
 		}
 	};
 
+	useEffect(() => {
+		setValue(
+			Number(localStorage.getItem('packet')) == 1 ? Number(localStorage.getItem('counter')) : 360
+		);
+		setPackageId(Number(localStorage.getItem('packet')));
+	}, [
+		typeof window !== 'undefined' && localStorage.getItem('counter'),
+		typeof window !== 'undefined' && localStorage.getItem('packet'),
+	]);
+
 	return (
 		<Modal
 			// variant="grade"
@@ -58,10 +71,11 @@ const SubscriptionModal = () => {
 				<div className={styles.left}>Выберите способ оплаты</div>
 				<div className={styles.right}>
 					<Title className={styles.top} size="small">
-						1 год <span>за 120€</span>
+						{`${value !== 360 ? value + ' дней ' : 1 + ' год '}`}
+						<span>за {packageId == 2 ? 30 : (value / 30) * 10}€</span>
 					</Title>
 					<Title className={styles.bottom} size="small">
-						<s>220€</s>
+						<s>{packageId == 2 ? 30 * 2 : (value / 30) * 10 * 2}€</s>
 					</Title>
 				</div>
 			</ModalTitle>
@@ -77,10 +91,9 @@ const SubscriptionModal = () => {
 						<span className={styles.icon}>
 							<CardIcon />
 						</span>
-
 						<span className={styles.text}>Картой через эквайринг банка</span>
 					</div>
-					<span className={styles.right}>12,99€</span>
+					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
 				</button>
 				<button
 					className={classNames(
@@ -100,7 +113,7 @@ const SubscriptionModal = () => {
 
 						<span className={styles.text}>Криптовалютой и картой</span>
 					</div>
-					<span className={styles.right}>12,99€</span>
+					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
 				</button>
 			</div>
 			<ModalButton className={styles.buy} onClick={buySubscription}>
