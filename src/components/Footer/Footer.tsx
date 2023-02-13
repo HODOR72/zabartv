@@ -13,7 +13,7 @@ interface FooterProps {
 
 export const Footer: FC<FooterProps> = ({ sticky }) => {
 	const { footerMenu, navMenu } = useTypedSelector((state) => state.menu);
-
+	console.log(navMenu)
 	const menu = [
 		{
 			title: 'About us',

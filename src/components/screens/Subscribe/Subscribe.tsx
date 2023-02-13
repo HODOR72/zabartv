@@ -11,6 +11,7 @@ import styles from './Subscribe.module.scss';
 
 export const Subscribe = () => {
 	const { data } = useTypedSelector((state) => state.subscribe);
+	console.log(data)
 
 	return (
 		<section className={styles.section}>

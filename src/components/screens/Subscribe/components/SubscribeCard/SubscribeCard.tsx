@@ -28,13 +28,12 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 		period,
 		visible,
 	} = card;
+	console.log(price, period);
 
 	const normalPrice = Number(price);
 	const isMonthPackage = period <= 30;
-	const priceInYear = normalPrice * 12 + 15;
-	const priceInMonth = normalPrice / 12 - 1;
 
-	const convertPrice = () => (isMonthPackage ? priceInYear : priceInMonth).toFixed(0);
+	const convertPrice = () => (isMonthPackage ? normalPrice * 12 : normalPrice / 12).toFixed(0);
 
 	const { t } = useTranslation();
 
@@ -42,6 +41,7 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 		showSubscriptionModal(true);
 		localStorage.setItem('packet', isMonthPackage ? '1' : '2');
 	};
+
 	return (
 		<>
 			{visible ? (
