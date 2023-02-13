@@ -1,14 +1,14 @@
-import { FC } from 'react';
 import { ButtonBase } from '@/components/ButtonBase/ButtonBase';
-import { FavouriteIcon } from '@/icons';
-import axios from '@/utils/axios';
-import NextLink from 'next/link';
-import Image from 'next/image';
-import styles from './MovieItem.module.scss';
-import { IMovie } from '@/types/IMovie';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { FavouriteIcon } from '@/icons';
 import { getFavorites } from '@/reducers/user/thunks';
+import { IMovie } from '@/types/IMovie';
+import axios from '@/utils/axios';
 import { getType } from '@/utils/getType';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import { FC } from 'react';
+import styles from './MovieItem.module.scss';
 
 interface MovieItemProps {
 	item: IMovie;
@@ -43,14 +43,7 @@ export const MovieItem: FC<MovieItemProps> = ({ item, favourite }) => {
 			<div className={styles.top}>
 				<NextLink href={`/movie/${slug}`}>
 					<a className={styles.poster}>
-						<Image
-							priority
-							quality={100}
-							layout="fill"
-							className={styles.image}
-							src={url}
-							alt={title}
-						/>
+						<Image priority quality={100} layout="fill" className={styles.image} src={url} />
 					</a>
 				</NextLink>
 				{favourite && (

@@ -42,7 +42,7 @@ const SubscriptionModal = () => {
 				}&payment_order_id=${paymentMethod}`,
 			});
 			push(data.payment_url);
-
+			console.log(data)
 			return data;
 		} catch (error) {
 			console.error(error);
