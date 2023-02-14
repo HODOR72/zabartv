@@ -23,10 +23,10 @@ export const Cabinet = () => {
 	const { t } = useTranslation();
 
 	const USER_TABS = [
-		{ txt: 'Настройки', content: <Settings data={data} /> },
-		{ txt: 'Избранное', content: <Favourites favorites={favorites?.items!} /> },
-		{ txt: 'История покупок', content: <Purchases /> },
-		{ txt: 'История просмотров', content: <Views viewed={viewed?.items!} /> },
+		{ txt: t('Настройки'), content: <Settings data={data} /> },
+		{ txt: t('Избранное'), content: <Favourites favorites={favorites?.items!} /> },
+		{ txt: t('История покупок'), content: <Purchases /> },
+		{ txt: t('История просмотров'), content: <Views viewed={viewed?.items!} /> },
 	];
 
 	const dispatch = useAppDispatch();
