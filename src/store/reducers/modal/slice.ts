@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	isVisibleRegisterModal: false,
 	isVisibleSubscribeModal: false,
+	isVisibleSubscribeEmptyModal: false,
 	isVisibleSubscriptionModal: false,
 	isVisibleGradeModal: false,
 	isVisibleAuthModal: false,
@@ -15,27 +16,31 @@ export const modalSlice = createSlice({
 	reducers: {
 		showRegisterModal: (state, action) => ({
 			...state,
-			isVisibleRegisterModal: action.payload	
+			isVisibleRegisterModal: action.payload,
 		}),
 		showSubscribeModal: (state, action) => ({
 			...state,
-			isVisibleSubscribeModal: action.payload	
+			isVisibleSubscribeModal: action.payload,
+		}),
+		showSubscribeEmptyModal: (state, action) => ({
+			...state,
+			isVisibleSubscribeEmptyModal: action.payload,
 		}),
 		showSubscriptionModal: (state, action) => ({
 			...state,
-			isVisibleSubscriptionModal: action.payload	
+			isVisibleSubscriptionModal: action.payload,
 		}),
 		showGradeModal: (state, action) => ({
 			...state,
-			isVisibleGradeModal: action.payload	
+			isVisibleGradeModal: action.payload,
 		}),
 		showAuthModal: (state, action) => ({
 			...state,
-			isVisibleAuthModal: action.payload	
+			isVisibleAuthModal: action.payload,
 		}),
 		showForgotPasswordModal: (state, action) => ({
 			...state,
-			isVisibleForgotPasswordModal: action.payload	
+			isVisibleForgotPasswordModal: action.payload,
 		}),
 	},
 });

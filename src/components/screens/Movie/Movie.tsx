@@ -40,16 +40,21 @@ export const Movie = () => {
 		stat_url,
 		stream_film_link,
 		stream_trailer_link,
+		customer_group,
 	}: any = {
 		...data[0],
 	};
+	console.log(data[0]);
 	const categories = catalogs?.map((cat: ICatalog) => {
 		return cat.content.title_in_nav;
 	});
+	const { showSubscribeEmptyModal } = useTypedActions((state) => state.modal);
 
 	const image = `${img_base_url}/${img_path}`;
-
 	const watchMovie = () => {
+		if (customer_group) {
+			return showSubscribeEmptyModal(true);
+		}
 		if (parts && parts.length > 0) {
 			const { stream_film_link } = parts[0]?.season_data[0];
 			setUrl(stream_film_link);
@@ -108,19 +113,23 @@ export const Movie = () => {
 								</span>
 							)}
 
-							{hours === 0 && minutes && type !== 6 && (
+							{hours === 0 && minutes && type !== 6 ? (
 								<span className={styles.infoItem}>
 									{getShowTimeMovie(hours, minutes)}
 								</span>
+							) : (
+								<></>
 							)}
 
-							{options &&
-								options.length &&
+							{options && options.length ? (
 								options?.map((option: IOption) => (
 									<span key={option.filter_id} className={styles.infoItem}>
 										{option.option_value}
 									</span>
-								))}
+								))
+							) : (
+								<></>
+							)}
 						</div>
 						<div
 							className={styles.desc}
