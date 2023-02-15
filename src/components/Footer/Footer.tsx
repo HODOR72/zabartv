@@ -13,7 +13,7 @@ interface FooterProps {
 
 export const Footer: FC<FooterProps> = ({ sticky }) => {
 	const { footerMenu, navMenu } = useTypedSelector((state) => state.menu);
-	console.log(navMenu)
+	console.log(navMenu);
 	const menu = [
 		{
 			title: 'About us',
@@ -58,10 +58,10 @@ export const Footer: FC<FooterProps> = ({ sticky }) => {
 			</div>
 			<div className={styles.bottom}>
 				<div className={classNames('container', styles.bottomContainer)}>
-					<span className={styles.copy}>© 2022 ООО «ZabarTV»</span>
+					<span className={styles.copy}>{t('© 2022 ООО «ZabarTV»')}</span>
 					<Social />
 					<p className={styles.desc}>
-						Дизайн и разработка -&nbsp;
+						{t('Design and development')} -&nbsp;
 						<a
 							target={'_blank'}
 							rel={'noreferrer'}

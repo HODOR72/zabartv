@@ -8,18 +8,21 @@ import Modals from './components/Modals';
 import { Title } from '@/UI/Title/Title';
 //
 import styles from './Subscribe.module.scss';
+import { useTranslation } from 'next-i18next';
 
 export const Subscribe = () => {
 	const { data } = useTypedSelector((state) => state.subscribe);
-	console.log(data)
+
+	const { t } = useTranslation();
 
 	return (
 		<section className={styles.section}>
 			<div className={classNames('container', styles.container)}>
-				<Title className={styles.title}>Подписка ZabarTV</Title>
+				<Title className={styles.title}>{t('Subscribe ZabarTV')}</Title>
 				<p className={styles.desc}>
-					Покажем уникальные сериалы и фильмы. Подберем кино по интересам и настроению. Для вас
-					и вашей семьи.
+					{t(
+						'Show unique series and films. We will select films according to interests and mood. For you and your family'
+					)}
 				</p>
 				<div className={styles.cards}>
 					{data?.map((card) => (

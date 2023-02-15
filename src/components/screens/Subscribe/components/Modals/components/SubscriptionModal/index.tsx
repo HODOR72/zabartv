@@ -14,6 +14,7 @@ import axios from '@/utils/axios';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import MasterCardVisa from '../../../../../../Icons/VisaMS.png';
+import { useTranslation } from 'next-i18next';
 
 const SubscriptionModal = () => {
 	const [paymentMethod, setPaymentMethod] = useState<string>('card');
@@ -42,7 +43,7 @@ const SubscriptionModal = () => {
 				}&payment_order_id=${paymentMethod}`,
 			});
 			push(data.payment_url);
-			console.log(data)
+			console.log(data);
 			return data;
 		} catch (error) {
 			console.error(error);
@@ -59,6 +60,8 @@ const SubscriptionModal = () => {
 		typeof window !== 'undefined' && localStorage.getItem('packet'),
 	]);
 
+	const { t } = useTranslation();
+
 	return (
 		<Modal
 			// variant="grade"
@@ -68,7 +71,7 @@ const SubscriptionModal = () => {
 			className={styles.modal}
 		>
 			<ModalTitle className={styles.modal_title}>
-				<div className={styles.left}>Выберите способ оплаты</div>
+				<div className={styles.left}>{t('Select a Payment Method')}</div>
 				<div className={styles.right}>
 					<Title className={styles.top} size="small">
 						{`${value !== 360 ? value + ' дней ' : 1 + ' год '}`}
@@ -91,7 +94,7 @@ const SubscriptionModal = () => {
 						<span className={styles.icon}>
 							<CardIcon />
 						</span>
-						<span className={styles.text}>Картой через эквайринг банка</span>
+						<span className={styles.text}>{t('By card through bank acquiring')}</span>
 					</div>
 					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
 				</button>
@@ -111,13 +114,13 @@ const SubscriptionModal = () => {
 							<Image src={MasterCardVisa} width={31} height={36} />
 						</span>
 
-						<span className={styles.text}>Криптовалютой и картой</span>
+						<span className={styles.text}>{t('Cryptocurrency and card')}</span>
 					</div>
 					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
 				</button>
 			</div>
 			<ModalButton className={styles.buy} onClick={buySubscription}>
-				ОПЛАТИТЬ
+				{t('PAY')}
 			</ModalButton>
 		</Modal>
 	);

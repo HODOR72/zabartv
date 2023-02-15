@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import styles from './RegisterModal.module.scss';
 import axios from '@/utils/axios';
 import * as Yup from 'yup';
+import { useTranslation } from 'next-i18next';
 
 export const RegisterModal = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -94,9 +95,11 @@ export const RegisterModal = () => {
 			console.error(error);
 		}
 	});
+	const { t } = useTranslation();
+
 	return (
 		<Modal className={styles.modal} fullscreen open={isVisibleRegisterModal} onClose={handleClose}>
-			<ModalTitle>Регистрация</ModalTitle>
+			<ModalTitle>{t('Registration')}</ModalTitle>
 			<form action="#" noValidate onSubmit={handleRegister}>
 				<ModalInputs>
 					<Controller
@@ -107,7 +110,7 @@ export const RegisterModal = () => {
 								<ModalInput
 									name="password"
 									type="password"
-									placeholder="Придумайте пароль"
+									placeholder={t('Create a password')}
 									value={value}
 									onChange={onChange}
 									errorMessage={errors?.password?.message}
@@ -124,7 +127,7 @@ export const RegisterModal = () => {
 								<ModalInput
 									name="password_confirm"
 									type="password"
-									placeholder="Повторите пароль"
+									placeholder={t('Repeat password')}
 									value={value}
 									onChange={onChange}
 									errorMessage={errors.password_confirm?.message}
@@ -136,12 +139,12 @@ export const RegisterModal = () => {
 					{errorMessages?.length > 0
 						? errorMessages?.map((error) => (
 								<ModalErrorMessage key={error}>
-									Не удалось зарегистрироваться
+									{t('Failed to register')}
 								</ModalErrorMessage>
 						  ))
 						: null}
 				</ModalInputs>
-				<ModalButton spinner={isLoading}>Зарегистрироваться</ModalButton>
+				<ModalButton spinner={isLoading}>{t('Register')}</ModalButton>
 			</form>
 		</Modal>
 	);

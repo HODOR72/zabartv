@@ -6,6 +6,7 @@ import { RegisterContent } from './components/RegisterContent/RegisterContent';
 import { LoginContent } from './components/LoginContent/LoginContent';
 import styles from './AuthModal.module.scss';
 import classNames from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 export const AuthModal = () => {
 	const { isVisibleAuthModal } = useTypedSelector((state) => state.modal);
@@ -22,6 +23,7 @@ export const AuthModal = () => {
 		handleClose();
 		showForgotPasswordModal(true);
 	};
+	const { t } = useTranslation();
 
 	return (
 		<Modal fullscreen open={isVisibleAuthModal} onClose={handleClose}>
@@ -30,13 +32,13 @@ export const AuthModal = () => {
 					onClick={() => setAuthState('login')}
 					activeClassName={authState === 'login'}
 				>
-					Вход
+					{t('Login')}
 				</ModalTitle>
 				<ModalTitle
 					onClick={() => setAuthState('register')}
 					activeClassName={authState === 'register'}
 				>
-					Регистрация
+					{t('Registration')}
 				</ModalTitle>
 			</ModalTabs>
 			<div className={classNames(styles.content, authState === 'login' && styles.active)}>
@@ -46,7 +48,7 @@ export const AuthModal = () => {
 				<RegisterContent authState={authState} />
 			</div>
 			<ModalLink onClick={handleShowForgotPasswordModal} as="button">
-				Забыли пароль?
+				{'Forgot your password?'}
 			</ModalLink>
 		</Modal>
 	);

@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from '@/utils/axios';
 import { useState } from 'react';
+import { useTranslation } from 'next-i18next';
 
 export const ForgotPasswordModal = () => {
 	const [success, setSuccess] = useState<string>('');
@@ -52,6 +53,8 @@ export const ForgotPasswordModal = () => {
 		}
 	};
 
+	const { t } = useTranslation();
+
 	const handleSubmitForm = handleSubmit(async (form) => {
 		const { email } = form;
 
@@ -61,15 +64,15 @@ export const ForgotPasswordModal = () => {
 			setErrorMessages(data);
 		} else {
 			if (data.status === 'success') {
-				setSuccess('Письмо отправлено вам на почту!');
+				setSuccess(t('The letter has been sent to your email!'));
 			}
 		}
 	});
 
 	return (
 		<Modal fullscreen open={isVisibleForgotPasswordModal} onClose={handleClose}>
-			<ModalTitle className={styles.title}>Забыли пароль</ModalTitle>
-			<ModalDesc>Мы вышлем вам письмо с ссылкой для измены пароля</ModalDesc>
+			<ModalTitle className={styles.title}>{t('Forgot your password?')}</ModalTitle>
+			<ModalDesc>{t('We will send you an email with a link to change your password')}</ModalDesc>
 			<form action="#" noValidate onSubmit={handleSubmitForm}>
 				<ModalInputs>
 					<Controller
@@ -84,7 +87,7 @@ export const ForgotPasswordModal = () => {
 									onChange={onChange}
 									name="email"
 									type="email"
-									placeholder="Электронная почта"
+									placeholder={t('Email')}
 								/>
 							);
 						}}
@@ -96,7 +99,7 @@ export const ForgotPasswordModal = () => {
 						: null}
 				</ModalInputs>
 				<ModalButton spinner={isLoading} onClick={handleSubmitForm}>
-					Получить письмо
+					{t('Get a letter')}
 				</ModalButton>
 				{success ? <span className={styles.success}>{success}</span> : null}
 			</form>

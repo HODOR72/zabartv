@@ -19,9 +19,10 @@ import getShowTimeMovie from '@/utils/getShowTimeMovie';
 import axios from '@/utils/axios';
 //
 import styles from './Movie.module.scss';
+import { useTranslation } from 'next-i18next';
 
 export const Movie = () => {
-	const { data } = useTypedSelector((state:any) => state.movie);
+	const { data } = useTypedSelector((state: any) => state.movie);
 	const { openPlayer, setUrl } = useTypedActions((state) => state.player);
 
 	const {
@@ -79,7 +80,7 @@ export const Movie = () => {
 			console.error(e);
 		}
 	};
-	console.log(stat_url);
+	const { t } = useTranslation();
 
 	return (
 		<>
@@ -133,7 +134,7 @@ export const Movie = () => {
 								className={styles.btn}
 								icon={<PlayIcon />}
 							>
-								Смотреть
+								{t('Watch')}
 							</Button>
 							{stream_trailer_link && (
 								<Button
@@ -142,7 +143,7 @@ export const Movie = () => {
 									className={styles.btn}
 									variant="dark"
 								>
-									Трейлер
+									{t('Trailer')}
 								</Button>
 							)}
 							<FavoriteButton />

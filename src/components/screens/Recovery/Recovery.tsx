@@ -15,6 +15,7 @@ import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import axios from '@/utils/axios';
 import { RoutesEnum } from '@/constants/routes';
+import { useTranslation } from 'next-i18next';
 
 export const Recovery = () => {
 	const {
@@ -84,13 +85,13 @@ export const Recovery = () => {
 			reset();
 		}
 	});
-
+	const { t } = useTranslation();
 	return (
 		<section className={styles.section}>
 			<div className={classNames('container', styles.container)}>
-				<Title className={styles.title}>Восстановление пароля</Title>
+				<Title className={styles.title}>{t('Password recovery')}</Title>
 				<form className={styles.form} action="#" noValidate onSubmit={handleRecovery}>
-					<h2 className={styles.formTitle}>Укажите новый пароль</h2>
+					<h2 className={styles.formTitle}>{t('Enter a new password')}</h2>
 					<div className={styles.formContainer}>
 						<div className={styles.inputs}>
 							<Controller
@@ -102,7 +103,7 @@ export const Recovery = () => {
 											className={styles.input}
 											name="password"
 											type="password"
-											placeholder="Придумайте пароль"
+											placeholder={t('Create a password')}
 											value={value}
 											onChange={onChange}
 											errorMessage={errors?.password?.message}
@@ -120,7 +121,7 @@ export const Recovery = () => {
 											className={styles.input}
 											name="password_confirm"
 											type="password"
-											placeholder="Повторите пароль"
+											placeholder={t('Repeat password')}
 											value={value}
 											onChange={onChange}
 											errorMessage={errors.password_confirm?.message}
@@ -138,7 +139,7 @@ export const Recovery = () => {
 								: null}
 						</div>
 						<Button variant="gradient" className={styles.btn} spinner={isLoading}>
-							Изменить пароль
+							{t('Change password')}
 						</Button>
 					</div>
 				</form>

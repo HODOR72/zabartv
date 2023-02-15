@@ -48,7 +48,7 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 				<div className={classNames(styles.card, !isMonthPackage && styles.year)}>
 					<Title level="h2" size="medium" className={styles.title}>
 						{title}
-						&nbsp;за
+						&nbsp;${t('behind')}
 						<span>&nbsp;{normalPrice}€</span>
 					</Title>
 					<p className={styles.desc}>

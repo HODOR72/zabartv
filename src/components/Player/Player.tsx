@@ -8,6 +8,7 @@ import styles from './Player.module.scss';
 import Plyr from 'plyr-react';
 import 'plyr-react/plyr.css';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 const qualities = [
 	{ label: '1080p', value: '1080' },
@@ -15,8 +16,8 @@ const qualities = [
 ];
 
 export const Player = () => {
-	const a = useRouter()
-	console.log(a)
+	const a = useRouter();
+	console.log(a);
 	const { isVisiblePlayer, url } = useTypedSelector((state) => state.player);
 	const { openPlayer } = useTypedActions((state) => state.player);
 
@@ -32,7 +33,7 @@ export const Player = () => {
 		}
 	}, [isVisiblePlayer]);
 
-	console.log(url)
+	const { t } = useTranslation();
 
 	return (
 		<>
@@ -40,7 +41,7 @@ export const Player = () => {
 				<div className={classNames(styles.wrapper, isVisiblePlayer && styles.show)}>
 					<ButtonBase
 						aria-label="Закрыть"
-						title="Закрыть"
+						title={t('Close')}
 						onClick={handleClosePlayer}
 						className={styles.close}
 					>

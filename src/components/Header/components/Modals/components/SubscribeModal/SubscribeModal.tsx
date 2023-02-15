@@ -16,17 +16,18 @@ export const SubscribeModal = () => {
 	const { t } = useTranslation();
 
 	const { ModalTitle, ModalDesc, ModalButton } = Modal;
-	
+
 	return (
 		<Modal variant="gradient" open={isVisibleSubscribeModal} onClose={handleClose}>
-			<ModalTitle>Подписка ZabarTV</ModalTitle>
+			<ModalTitle>{t('Subscribe ZabarTV')}</ModalTitle>
 			<ModalDesc>
-				Покажем уникальные сериалы и фильмы. Подберем кино по интересам и настроению. Для вас и
-				вашей семьи.
+				{t(
+					'Show unique series and films. We will select films according to interests and mood. For you and your family'
+				)}
 			</ModalDesc>
 			<NextLink href={RoutesEnum.Subscribe} passHref>
 				<ModalButton as="link" variant="white" icon={<SubscribeIcon />}>
-					{t('subscribe_button')} за 12€
+					{t('subscribe_button')} {t('behind')} 12€
 				</ModalButton>
 			</NextLink>
 		</Modal>

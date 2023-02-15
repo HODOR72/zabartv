@@ -3,6 +3,7 @@ import axios from '@/utils/axios';
 import styles from './SearchList.module.scss';
 import { IMovie } from '@/types/IMovie';
 import { SearchItem } from '../SearchItem/SearchItem';
+import { useTranslation } from 'next-i18next';
 
 interface SearchListProps {
 	value: string;
@@ -15,6 +16,7 @@ interface SearchData {
 export const SearchList: FC<SearchListProps> = ({ value }) => {
 	const [data, setData] = useState<SearchData | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const { t } = useTranslation();
 
 	const search = async () => {
 		try {
@@ -45,7 +47,7 @@ export const SearchList: FC<SearchListProps> = ({ value }) => {
 			{data?.items.length! > 0 ? (
 				data?.items.map((item, idx) => <SearchItem key={idx} item={item} />)
 			) : (
-				<span className={styles.message}>не найдено</span>
+				<span className={styles.message}>{t('not found')}</span>
 			)}
 		</div>
 	);
@@ -57,12 +59,12 @@ export const SearchList: FC<SearchListProps> = ({ value }) => {
 					{data?.items.length! > 0 ? (
 						data?.items.map((item, idx) => <SearchItem key={idx} item={item} />)
 					) : (
-						<span className={styles.message}>не найдено</span>
+						<span className={styles.message}>{t('not found')}</span>
 					)}
 				</div>
 			) : (
 				<div className={styles.list}>
-					<span className={styles.message}>Загрузка...</span>
+					<span className={styles.message}>{t('Loading...')}</span>
 				</div>
 			)}
 		</>

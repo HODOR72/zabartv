@@ -3,6 +3,7 @@ import { Title } from '@/UI/Title/Title';
 import { MusicCarousel } from './components/MusicCarousel/MusicCarousel';
 import classNames from 'classnames';
 import styles from './Music.module.scss';
+import { useTranslation } from 'next-i18next';
 
 export const Music = () => {
 	const data = [
@@ -73,12 +74,12 @@ export const Music = () => {
 		{ txt: 'Клипы', content: <MusicCarousel data={data} /> },
 		{ txt: 'Топ-5', content: <MusicCarousel data={data} /> },
 	];
-
+	const { t } = useTranslation();
 	return (
 		<section className={styles.music}>
 			<div className={classNames('container', styles.container)}>
 				<Title level="h2" size="medium" className={styles.title}>
-					Музыка
+					{t('music')}
 				</Title>
 				<Tabs tabs={tabs} />
 			</div>

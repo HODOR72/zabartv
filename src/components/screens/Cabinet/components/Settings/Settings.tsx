@@ -5,6 +5,7 @@ import { Checkbox } from '@/UI/Checkbox/Checkbox';
 import { ChangeEvent, FC, useState } from 'react';
 import { CabinetInput } from '../index';
 import styles from './Settings.module.scss';
+import { useTranslation } from 'next-i18next';
 
 interface SettingsProps {
 	data: IUser;
@@ -45,18 +46,20 @@ export const Settings: FC<SettingsProps> = ({ data }) => {
 		await dispatch(getMe());
 	};
 
+	const { t } = useTranslation();
+
 	return (
 		<div className={styles.settings}>
 			<div className={styles.row}>
 				<CabinetInput
-					label="Электронная почта"
+					label={t('Email')}
 					type="email"
 					value={email}
 					placeholder={email}
 					applyChanges={applyEmail}
 				/>
 				<CabinetInput
-					label="Пароль"
+					label={t('Passsword')}
 					type="password"
 					value={password}
 					placeholder="Введите пароль"
@@ -64,12 +67,12 @@ export const Settings: FC<SettingsProps> = ({ data }) => {
 				/>
 				<CabinetInput
 					mask="00.00.0000"
-					label="Дата рождения"
+					label={t('Date of Birth')}
 					type="text"
 					placeholder={
 						date_of_birth !== null && date_of_birth !== 'null'
 							? date_of_birth
-							: 'Введите дату рождения'
+							: t('Enter date of Birth')
 					}
 					value={date_of_birth}
 					applyChanges={applyDate}
@@ -78,7 +81,7 @@ export const Settings: FC<SettingsProps> = ({ data }) => {
 			<Checkbox
 				checked={Boolean(subscribe_on_news)}
 				onChange={handleSubscribeEmail}
-				label="Получать новости и спецпредложния на эл.почту"
+				label={t('Receive news and special offers by e-mail')}
 			/>
 		</div>
 	);

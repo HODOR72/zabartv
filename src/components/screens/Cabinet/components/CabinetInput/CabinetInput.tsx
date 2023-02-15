@@ -5,6 +5,7 @@ import { Link } from '@/UI/Link/Link';
 import { IMaskInput } from 'react-imask';
 import classNames from 'classnames';
 import styles from './CabinetInput.module.scss';
+import { useTranslation } from 'next-i18next';
 
 export interface CabinetInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;
@@ -50,7 +51,7 @@ export const CabinetInput: FC<CabinetInputProps> = ({
 		closeField();
 		setInputValue('');
 	};
-
+	const { t } = useTranslation();
 	return (
 		<div data-testid="cabinet-input-item" className={styles.item}>
 			<span className={styles.label}>{label}</span>
@@ -86,7 +87,7 @@ export const CabinetInput: FC<CabinetInputProps> = ({
 					onClick={handleApplyChanges}
 					className={styles.apply}
 				>
-					Сохранить изменения
+					{t('Save Changes')}
 				</Link>
 			)}
 			<ButtonBase

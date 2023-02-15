@@ -11,9 +11,11 @@ export const Support = () => {
 			<Title className={styles.title} level="h2" size="small">
 				{t('support_title')}
 			</Title>
-			<p className={styles.desc}>Мы всегда готовы вам помочь. Наши операторы онлайн 24/7</p>
+			<p className={styles.desc}>
+				{t('We are always ready to help you. Our operators are online 24/7')}
+			</p>
 			<a href="#" className={styles.link}>
-				НАПИСАТЬ В ПОДДЕРЖКУ
+				{t('WRITE TO SUPPORT')}
 				<TelegramIcon />
 			</a>
 		</div>

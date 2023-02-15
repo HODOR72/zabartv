@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { requiredFieldMessage, incorrectlyFieldMessage } from '@/constants/validation';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
+import { useTranslation } from 'next-i18next';
 
 export const RegisterContent = ({ authState }: { authState: string }) => {
 	const { ModalInputs, ModalInput, ModalButton } = Modal;
@@ -38,7 +39,7 @@ export const RegisterContent = ({ authState }: { authState: string }) => {
 		showAuthModal(false);
 		showRegisterModal(true);
 	});
-
+	const { t } = useTranslation();
 	useEffect(clearErrors, [authState]);
 
 	return (
@@ -56,7 +57,7 @@ export const RegisterContent = ({ authState }: { authState: string }) => {
 								onChange={onChange}
 								name="email"
 								type="email"
-								placeholder="Электронная почта"
+								placeholder={t('Email')}
 							/>
 						);
 					}}
@@ -73,13 +74,13 @@ export const RegisterContent = ({ authState }: { authState: string }) => {
 								onChange={onChange}
 								name="name"
 								type="text"
-								placeholder="Ваше имя"
+								placeholder={t('Your name')}
 							/>
 						);
 					}}
 				/>
 			</ModalInputs>
-			<ModalButton>Подтвердить почту</ModalButton>
+			<ModalButton>{t('Confirm email')}</ModalButton>
 		</form>
 	);
 };

@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Grade.module.scss';
+import { useTranslation } from 'next-i18next';
 
 interface GradeProps {
 	value: number;
@@ -9,7 +10,7 @@ interface GradeProps {
 
 export const Grade: FC<GradeProps> = ({ value, setValue }) => {
 	const [hover, setHover] = useState<number | null>(null);
-
+	const { t } = useTranslation();
 	return (
 		<div className={styles.container}>
 			<div className={styles.grades}>
@@ -37,8 +38,8 @@ export const Grade: FC<GradeProps> = ({ value, setValue }) => {
 				})}
 			</div>
 			<div className={styles.row}>
-				<span className={styles.caption}>Очень плохо</span>
-				<span className={styles.caption}>Отлично</span>
+				<span className={styles.caption}>{t('Very bad')}</span>
+				<span className={styles.caption}>{t('Great')}</span>
 			</div>
 		</div>
 	);

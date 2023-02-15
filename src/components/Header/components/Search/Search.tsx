@@ -10,6 +10,7 @@ import { TextField } from '@/UI/TextField/TextField';
 import styles from './Search.module.scss';
 import classNames from 'classnames';
 import { SearchList } from './components/SearchList/SearchList';
+import { useTranslation } from 'next-i18next';
 
 interface SearchProps {
 	className?: string;
@@ -48,7 +49,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
 	};
 
 	const isActive = debouncedValue && isSearchVisible;
-
+	const { t } = useTranslation();
 	return (
 		<div
 			ref={searchRef}
@@ -61,7 +62,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
 				type="search"
 				value={value}
 				onChange={handleChange}
-				placeholder="Поиск..."
+				placeholder={t('Search')}
 			/>
 			<ButtonBase type="button" className={styles.close} onClick={handleClose}>
 				<CloseIcon />

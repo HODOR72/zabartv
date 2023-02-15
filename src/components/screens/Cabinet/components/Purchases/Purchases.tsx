@@ -25,7 +25,6 @@ export const Purchases = () => {
 
 	const { t } = useTranslation();
 	let tr = t('No purchases');
-	console.log(tr)
 
 	return (
 		<>
@@ -36,9 +35,9 @@ export const Purchases = () => {
 						{item?.hasOwnProperty('order_id') ? (
 							<div className={styles.table}>
 								<div className={styles.top}>
-									<span className={styles.nameCol}>Когда куплен</span>
-									<span className={styles.nameCol}>Период активности</span>
-									<span className={styles.nameCol}>Цена</span>
+									<span className={styles.nameCol}>{t('When bought')}</span>
+									<span className={styles.nameCol}>{t('Activity period')}</span>
+									<span className={styles.nameCol}>{t('Price')}</span>
 								</div>
 								{data &&
 									data.length &&

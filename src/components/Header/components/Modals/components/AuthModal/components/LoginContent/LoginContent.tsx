@@ -15,6 +15,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useEffect, useState } from 'react';
 import axios from '@/utils/axios';
 import * as Yup from 'yup';
+import { useTranslation } from 'next-i18next';
 
 export const LoginContent = ({ authState }: { authState: string }) => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -91,7 +92,7 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 			console.error(error);
 		}
 	});
-
+	const { t } = useTranslation();
 	return (
 		<form action="#" noValidate onSubmit={handleLogin}>
 			<ModalInputs>
@@ -107,7 +108,7 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 								onChange={onChange}
 								name="email"
 								type="email"
-								placeholder="Электронная почта"
+								placeholder={t('Email')}
 							/>
 						);
 					}}
@@ -119,7 +120,7 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 						return (
 							<ModalInput
 								type="password"
-								placeholder="Введите пароль"
+								placeholder={t('enter password')}
 								value={value}
 								name="password"
 								onChange={onChange}
@@ -129,14 +130,9 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 						);
 					}}
 				/>
-				{/* {errorMessages && errorMessages?.length > 0
-					? errorMessages?.map((error) => (
-							<ModalErrorMessage key={error}>Пользователя не найдено</ModalErrorMessage>
-					  ))
-					: null} */}
 			</ModalInputs>
 			<ModalButton spinner={isLoading} onClick={handleLogin}>
-				Войти в аккаунт
+				{t('Войти в аккаунт')}
 			</ModalButton>
 		</form>
 	);
