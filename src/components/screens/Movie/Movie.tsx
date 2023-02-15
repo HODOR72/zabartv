@@ -102,25 +102,25 @@ export const Movie = () => {
 							))}
 						</div>
 						<div className={styles.info}>
-							{/* displayed if there is a clock and the type is not equal to 6 */}
 							{hours !== 0 && type !== 6 && (
 								<span className={styles.infoItem}>
 									{getShowTimeMovie(hours, minutes)}
 								</span>
 							)}
 
-							{/* shown if there are only minutes and the type is not equal to 6 */}
 							{hours === 0 && minutes && type !== 6 && (
 								<span className={styles.infoItem}>
 									{getShowTimeMovie(hours, minutes)}
 								</span>
 							)}
 
-							{options?.map((option: IOption) => (
-								<span key={option.filter_id} className={styles.infoItem}>
-									{option.option_value}
-								</span>
-							))}
+							{options &&
+								options.length &&
+								options?.map((option: IOption) => (
+									<span key={option.filter_id} className={styles.infoItem}>
+										{option.option_value}
+									</span>
+								))}
 						</div>
 						<div
 							className={styles.desc}

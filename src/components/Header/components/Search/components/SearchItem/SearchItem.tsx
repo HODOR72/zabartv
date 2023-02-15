@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './SearchItem.module.scss';
 import { Chip } from '@/UI/Chip/Chip';
 import { getType } from '@/utils/getType';
+import { useTranslation } from 'next-i18next';
 
 interface SearchItemProps {
 	item: [IMovie];
@@ -24,6 +25,7 @@ export const SearchItem: FC<SearchItemProps> = ({ item }) => {
 	const url = `${img_base_url}/${img_path}`;
 
 	const category = getType(type);
+	const { t } = useTranslation();
 
 	return (
 		<NextLink href={`/movie/${slug}`}>
@@ -33,7 +35,7 @@ export const SearchItem: FC<SearchItemProps> = ({ item }) => {
 						<Image layout="fill" className={styles.image} src={url} />
 					</div>
 					<div className={styles.text}>
-						<Chip className={styles.chip}>{category}</Chip>
+						<Chip className={styles.chip}>{t(category)}</Chip>
 						<h2 className={styles.title}>{title}</h2>
 					</div>
 				</div>

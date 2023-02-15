@@ -1,17 +1,17 @@
 export const getType = (id: number | undefined) => {
 	switch (id) {
 		case 1:
-			return 'Фильм';
+			return 'Film';
 		case 2:
-			return 'Сериал';
+			return 'Serial';
 		case 3:
-			return 'Мультик';
+			return 'Cartoon';
 		case 4:
-			return 'Мультсериал';
+			return 'Animated series';
 		case 5:
-			return 'Видео';
+			return 'Video';
 		case 6:
-			return 'ТВ';
+			return 'TV';
 		default:
 			return '21412';
 	}

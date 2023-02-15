@@ -11,6 +11,7 @@ import { getType } from '@/utils/getType';
 import getShowTimeMovie from '@/utils/getShowTimeMovie';
 //
 import styles from './MovieItem.module.scss';
+import { useTranslation } from 'next-i18next';
 
 interface MovieItemProps {
 	item: IMovieItem;
@@ -19,8 +20,9 @@ interface MovieItemProps {
 
 export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 	const url = `${item?.preview_base_url}/${item?.preview_path}`;
+	const { t } = useTranslation();
 
-	const genre = 'Комедия';
+	const genre = t('Comedy');
 	const chip = getType(item?.type);
 	const status = 'Подписка';
 
@@ -35,28 +37,30 @@ export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 					<div className={styles.content}>
 						<div className={styles.chips}>
 							<Chip className={styles.chip}>{genre}</Chip>
-							<Chip className={styles.chip}>{chip}</Chip>
+							<Chip className={styles.chip}>{t(chip)}</Chip>
 						</div>
 						<div className={styles.info}>
-							{/* displayed if there is a clock and the type is not equal to 6 */}
-							{item?.hours !== 0 && item?.minutes !== 6 && (
-								<span className={styles.infoItem}>
-									{getShowTimeMovie(item?.hours, item?.minutes)}
-								</span>
-							)}
+							{chip !== 'TV' && (
+								<>
+									{item?.hours !== 0 && item?.minutes !== 6 && (
+										<span className={styles.infoItem}>
+											{getShowTimeMovie(item?.hours, item?.minutes)}
+										</span>
+									)}
 
-							{/* shown if there are only minutes and the type is not equal to 6 */}
-							{item?.hours === 0 && item?.minutes && item?.type !== 6 && (
-								<span className={styles.infoItem}>
-									{getShowTimeMovie(item?.hours, item?.minutes)}
-								</span>
-							)}
+									{item?.hours === 0 && item?.minutes && item?.type !== 6 && (
+										<span className={styles.infoItem}>
+											{getShowTimeMovie(item?.hours, item?.minutes)}
+										</span>
+									)}
 
-							{item?.options?.map((el: IOption) => (
-								<span key={el.filter_id} className={styles.infoItem}>
-									{el.option_value}
-								</span>
-							))}
+									{item?.options?.map((el: IOption) => (
+										<span key={el.filter_id} className={styles.infoItem}>
+											{el.option_value}
+										</span>
+									))}
+								</>
+							)}
 						</div>
 					</div>
 				</div>

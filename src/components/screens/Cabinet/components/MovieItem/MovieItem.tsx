@@ -5,6 +5,7 @@ import { getFavorites } from '@/reducers/user/thunks';
 import { IMovie } from '@/types/IMovie';
 import axios from '@/utils/axios';
 import { getType } from '@/utils/getType';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { FC } from 'react';
@@ -38,6 +39,8 @@ export const MovieItem: FC<MovieItemProps> = ({ item, favourite }) => {
 		}
 	};
 
+	const { t } = useTranslation();
+
 	return (
 		<div className={styles.item}>
 			<div className={styles.top}>
@@ -52,7 +55,7 @@ export const MovieItem: FC<MovieItemProps> = ({ item, favourite }) => {
 					</ButtonBase>
 				)}
 			</div>
-			<span className={styles.status}>{getType(type)}</span>
+			<span className={styles.status}>{t(getType(type))}</span>
 			<NextLink href={`/movie/${slug}`}>
 				<a className={styles.title}>{title}</a>
 			</NextLink>
