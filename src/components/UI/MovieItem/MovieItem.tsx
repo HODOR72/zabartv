@@ -25,7 +25,6 @@ export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 	const genre = t('Comedy');
 	const chip = getType(item?.type);
 	const status = 'Подписка';
-
 	return (
 		<NextLink href={href || `/movie/${item?.slug}`}>
 			<a className={styles.item}>
@@ -42,16 +41,20 @@ export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 						<div className={styles.info}>
 							{chip !== 'TV' && (
 								<>
-									{item?.hours !== 0 && item?.minutes !== 6 && (
-										<span className={styles.infoItem}>
-											{getShowTimeMovie(item?.hours, item?.minutes)}
-										</span>
-									)}
+									{item?.hours !== 0 &&
+										item?.minutes !== 6 &&
+										Number(getShowTimeMovie(item?.hours, item?.minutes)) !== 0 && (
+											<span className={styles.infoItem}>
+												{getShowTimeMovie(item?.hours, item?.minutes)}
+											</span>
+										)}
 
-									{item?.hours === 0 && item?.minutes && item?.type !== 6 && (
+									{item?.hours === 0 && item?.minutes && item?.type !== 6 ? (
 										<span className={styles.infoItem}>
 											{getShowTimeMovie(item?.hours, item?.minutes)}
 										</span>
+									) : (
+										<></>
 									)}
 
 									{item?.options?.map((el: IOption) => (

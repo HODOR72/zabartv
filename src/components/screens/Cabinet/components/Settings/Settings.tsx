@@ -59,10 +59,10 @@ export const Settings: FC<SettingsProps> = ({ data }) => {
 					applyChanges={applyEmail}
 				/>
 				<CabinetInput
-					label={t('Passsword')}
+					label={t('Password')}
 					type="password"
 					value={password}
-					placeholder="Введите пароль"
+					placeholder={t('enter password')}
 					applyChanges={applyPassword}
 				/>
 				<CabinetInput
