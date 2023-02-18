@@ -1,9 +1,10 @@
 import { Category } from '@/components/Category/Category';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { IMovieItem } from '@/types/IMovieItem';
 import { Grid } from '@/UI/Grid/Grid';
 import { MovieItem } from '@/UI/MovieItem/MovieItem';
 
-export const Tv = () => {
+export const New = () => {
 	const { data } = useTypedSelector((state) => state.category);
 
 	const { content, child_items } = { ...data[0] };
@@ -22,7 +23,7 @@ export const Tv = () => {
 						renderItem={(el) => {
 							const item = el[0];
 
-							return <MovieItem href={`/tv/${item?.slug}`} item={item} />;
+							return <MovieItem href={`/new/${item?.slug}`} item={item} />;
 						}}
 					/>
 				),
