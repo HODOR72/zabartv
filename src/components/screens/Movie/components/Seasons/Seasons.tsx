@@ -7,9 +7,10 @@ import { TabsDefault } from '@/UI/Tabs/TabsDefault';
 
 interface SeasonsProps {
 	parts: IPart[] | undefined;
+	customerGroup: any;
 }
 
-export const Seasons: FC<SeasonsProps> = ({ parts }) => {
+export const Seasons: FC<SeasonsProps> = ({ parts, customerGroup }) => {
 	const tabs =
 		parts?.map((part) => {
 			const txt = `${part.season_number} сезон`;
@@ -20,13 +21,13 @@ export const Seasons: FC<SeasonsProps> = ({ parts }) => {
 				const url = `${preview_base_url}/${preview_path}`;
 
 				const id = idx + 1;
-
 				return {
 					poster: url,
 					id,
 					title: `Серия ${id}`,
 					url: item.stream_film_link,
 					desc: mini_description,
+					customerGroup,
 				};
 			});
 

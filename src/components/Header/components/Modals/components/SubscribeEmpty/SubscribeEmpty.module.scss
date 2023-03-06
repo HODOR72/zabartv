@@ -1,6 +1,10 @@
 .img {
 	margin-bottom: 30px;
 	text-align: center;
+	> svg {
+		width: 73px;
+		height: 73px;
+	}
 }
 .title {
 	margin-bottom: 16px;
@@ -63,9 +67,11 @@
 		margin-bottom: 10px;
 	}
 	.img {
-		height: 49px;
 		margin: 0 auto;
-		width: 49px;
+		> svg {
+			width: 49px;
+			height: 49px;
+		}
 	}
 	.btn {
 		font-weight: 700;

@@ -6,7 +6,7 @@ import styles from './Rating.module.scss';
 import { baseApi } from '@/api';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { GradeModal } from '../GradeModal/GradeModal';
+import { GradeModal } from '../FavoriteButton/GradeModal/GradeModal';
 
 interface RatingProps {
 	rating: string;

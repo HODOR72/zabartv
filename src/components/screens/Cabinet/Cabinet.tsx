@@ -51,6 +51,7 @@ export const Cabinet = () => {
 
 	const logoutUser = async () => {
 		logout();
+		localStorage.removeItem('isSubscribed');
 		push(RoutesEnum.Home);
 	};
 

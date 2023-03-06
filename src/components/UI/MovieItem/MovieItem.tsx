@@ -21,7 +21,6 @@ interface MovieItemProps {
 export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 	const url = `${item?.preview_base_url}/${item?.preview_path}`;
 	const { t } = useTranslation();
-
 	const genre = t('Comedy');
 	const chip = getType(item?.type);
 	const status = 'Подписка';
@@ -57,11 +56,15 @@ export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 										<></>
 									)}
 
-									{item?.options?.map((el: IOption) => (
-										<span key={el.filter_id} className={styles.infoItem}>
-											{el.option_value}
-										</span>
-									))}
+									{item?.options?.length && item?.options[0].option_value ? (
+										item?.options?.map((el: IOption) => (
+											<span key={el.filter_id} className={styles.infoItem}>
+												{el.option_value}
+											</span>
+										))
+									) : (
+										<></>
+									)}
 								</>
 							)}
 						</div>

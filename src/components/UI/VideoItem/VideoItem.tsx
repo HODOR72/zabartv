@@ -9,11 +9,14 @@ interface VideoItemProps {
 }
 
 export const VideoItem: FC<VideoItemProps> = ({ item }) => {
-	const { poster, title, desc, url } = item;
-
+	const { poster, title, desc, url, customerGroup } = item;
+	const { showSubscribeEmptyModal } = useTypedActions((state) => state.modal);
 	const { openPlayer, setUrl } = useTypedActions((state) => state.player);
 
 	const handleOpenPlayer = () => {
+		if (customerGroup) {
+			return showSubscribeEmptyModal(true);
+		}
 		openPlayer(true);
 		setUrl(url);
 	};

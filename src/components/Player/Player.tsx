@@ -1,6 +1,6 @@
 import { ButtonBase } from '@/components/ButtonBase/ButtonBase';
 import { CloseIcon } from '@/icons';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useTypedActions } from '@/hooks/useTypedActions';
 import classNames from 'classnames';
@@ -16,8 +16,6 @@ const qualities = [
 ];
 
 export const Player = () => {
-	const a = useRouter();
-	console.log(a);
 	const { isVisiblePlayer, url } = useTypedSelector((state) => state.player);
 	const { openPlayer } = useTypedActions((state) => state.player);
 

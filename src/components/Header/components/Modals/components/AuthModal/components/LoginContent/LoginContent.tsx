@@ -84,7 +84,12 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 					window.localStorage.setItem('zabar_session_id', data?.session_id);
 				}
 
-				push(RoutesEnum.Cabinet);
+				if (localStorage.getItem('isSubscribed')) {
+					push(RoutesEnum.Subscribe);
+					localStorage.removeItem('isSubscribed');
+				} else {
+					push(RoutesEnum.Cabinet);
+				}
 
 				showAuthModal(false);
 			}
@@ -132,7 +137,7 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 				/>
 			</ModalInputs>
 			<ModalButton spinner={isLoading} onClick={handleLogin}>
-				{t('Войти в аккаунт')}
+				{t('Sign in')}
 			</ModalButton>
 		</form>
 	);

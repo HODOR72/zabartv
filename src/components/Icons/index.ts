@@ -24,7 +24,7 @@ import ExitFullScreenIcon from './svg/exitfullscreen.svg';
 import PauseIcon from './svg/pause.svg';
 import CardIcon from './svg/card.svg';
 import BitcoinIcon from './svg/bitcoin.svg';
-import EyeSlash from './eye-slash.png';
+import EyeSlash from './eye-slash.svg';
 
 export {
 	LogoIcon,

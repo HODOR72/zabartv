@@ -86,8 +86,13 @@ export const RegisterModal = () => {
 				setErrorMessages(data);
 			} else {
 				setUser(data);
-
-				push(RoutesEnum.Cabinet);
+				console.log(localStorage.getItem('isSubscribed'));
+				if (localStorage.getItem('isSubscribed')) {
+					push(RoutesEnum.Subscribe);
+					localStorage.removeItem('isSubscribed');
+				} else {
+					push(RoutesEnum.Cabinet);
+				}
 
 				showRegisterModal(false);
 			}

@@ -44,7 +44,6 @@ export const Movie = () => {
 	}: any = {
 		...data[0],
 	};
-	console.log(data[0]);
 	const categories = catalogs?.map((cat: ICatalog) => {
 		return cat.content.title_in_nav;
 	});
@@ -159,7 +158,7 @@ export const Movie = () => {
 						</div>
 					</div>
 				</div>
-				{parts?.length ? <Seasons parts={parts} /> : null}
+				{parts?.length ? <Seasons parts={parts} customerGroup={customer_group} /> : null}
 			</section>
 			{/* <GradeModal /> */}
 		</>
