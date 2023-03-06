@@ -1,0 +1,30 @@
+.container {
+	padding-bottom: 103px;
+
+	@media (max-width: 1500px) {
+		padding-left: 45px;
+		padding-right: 45px;
+	}
+
+	@media (max-width: 1024px) {
+		padding-bottom: 70px;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+	@media (max-width: 768px) {
+		padding: 0 var(--container-offset) 50px;
+	}
+
+	@media (max-width: 576px) {
+		padding-bottom: 31px;
+	}
+}
+
+.title {
+	margin-bottom: 16px;
+
+	@media (max-width: 576px) {
+		margin-bottom: 0;
+	}
+}

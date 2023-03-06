@@ -1,0 +1,143 @@
+.btn {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 0.05em;
+	font-size: 20px;
+	line-height: 26px;
+	background-color: var(--color-primary);
+	padding: 21px 30px 19px;
+	border-radius: 50px;
+	overflow: hidden;
+	transition: background-color 0.3s, color 0.3s;
+
+	&[disabled] {
+		pointer-events: none;
+	}
+
+	&:hover {
+		background-color: var(--color-primary-active);
+	}
+}
+
+.gradient {
+	background: linear-gradient(314.12deg, #efda1d -47.81%, #fca11a 67.79%);
+
+	&:hover {
+		background: linear-gradient(319.22deg, #efda1d 13.05%, #fca11a 82.02%);
+	}
+}
+
+.small {
+	font-size: 16px;
+	line-height: 28.8px;
+	padding: 14px 20px 12px;
+	min-width: 276px;
+}
+
+.icon {
+	display: block;
+	width: 25px;
+	height: 27px;
+	margin-right: 7px;
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+		stroke: currentColor;
+	}
+}
+
+.white {
+	background-color: #fff;
+	color: var(--color-primary);
+
+	&:hover {
+		color: #fff;
+		background-color: var(--color-primary);
+	}
+}
+
+[data-theme='light'] {
+	.dark {
+		background-color: #ecf1fa;
+		color: #7e8bb4;
+
+		&:hover {
+			background-color: #dde7fb;
+			color: #7e8bb4;
+		}
+	}
+}
+
+.dark {
+	background-color: #141f34;
+	color: var(--color-primary);
+
+	svg {
+		fill: currentColor;
+	}
+
+	&:hover {
+		background-color: #212b3b;
+		color: var(--color-primary-active);
+	}
+}
+
+[data-theme='light'] {
+	.stroke {
+		border: 1px solid #dadee7;
+
+		&:hover {
+			background-color: #dadee7;
+		}
+	}
+}
+
+.stroke {
+	border: 1px solid rgba(#fff, 0.2);
+	background-color: transparent;
+	color: var(--color-white);
+
+	@media (max-width: 576px) {
+		font-size: 16px;
+		line-height: 28.8px;
+		padding: 16px 30px 13px;
+	}
+
+	span svg {
+		stroke: none;
+	}
+
+	&:hover {
+		background-color: rgba(#fff, 0.2);
+		color: #fff;
+	}
+}
+
+.spinner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--color-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	circle {
+		stroke: var(--color-white);
+		stroke-opacity: 0.5;
+	}
+
+	path {
+		stroke: var(--color-white);
+	}
+}

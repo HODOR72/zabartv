@@ -1,0 +1,96 @@
+.item {
+	position: relative;
+	border: 1px solid #232c3d;
+	border-radius: 25px;
+	padding: 32px 45px 37px;
+	overflow: hidden;
+	transition: border-color 0.3s;
+
+	@media (max-width: 1200px) {
+		padding: 27px 30px;
+	}
+
+	@media (max-width: 768px) {
+		padding: 32px 45px 37px;
+	}
+
+	@media (max-width: 360px) {
+		padding: 32px 35px 30px;
+	}
+}
+
+[data-theme='light'] {
+	.item {
+		border-color: #dadee7;
+	}
+}
+
+.label {
+	display: block;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 27.8px;
+	color: #52596c;
+}
+
+.input {
+	-webkit-appearance: none;
+	width: 100%;
+	appearance: none;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	outline: none;
+	font-family: inherit;
+	color: var(--color-light);
+	transition: color 0.3s;
+	font-size: 20px;
+	line-height: 33px;
+
+	&[type='password'] {
+		font-family: Verdana;
+		letter-spacing: 0.5px;
+	}
+
+	&::placeholder {
+		opacity: 1;
+		color: var(--color-light);
+	}
+}
+
+.value {
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	white-space: nowrap;
+}
+
+.placeholder {
+	color: var(--color-light);
+	font-size: 20px;
+	line-height: 33px;
+	white-space: nowrap;
+}
+
+.apply {
+	margin-top: 5px;
+	white-space: nowrap;
+}
+
+.btn {
+	position: absolute;
+	display: block;
+	right: 20px;
+	top: 20px;
+	width: 22px;
+	height: 22px;
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+		fill: var(--color-light);
+	}
+}

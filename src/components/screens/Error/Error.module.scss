@@ -1,0 +1,50 @@
+.container {
+	padding-bottom: 150px;
+	padding-top: 54px;
+
+	@media (max-width: 576px) {
+		padding-top: 20px;
+		padding-bottom: 100px;
+	}
+}
+
+.formTitle {
+	font-family: 'Noah';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 180%;
+	color: var(--color-white);
+	margin-bottom: 21px;
+	transition: color 0.3s;
+	margin-bottom: 28px;
+
+	@media (max-width: 576px) {
+		font-size: 25px;
+		line-height: 40px;
+	}
+}
+
+.formContainer {
+	max-width: fit-content;
+	margin: 0 auto;
+	text-align: center;
+
+	@media (max-width: 576px) {
+		max-width: 100%;
+	}
+}
+
+.btn {
+	padding: 25px 0 24px;
+	width: 100%;
+	max-width: 350px;
+
+	margin: 0 auto;
+	margin-top: 47px;
+
+	@media (max-width: 576px) {
+		font-size: 16px;
+		line-height: 20px;
+	}
+}

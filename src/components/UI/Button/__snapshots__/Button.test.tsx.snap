@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button.test.tsx if button 1`] = `
+<button
+  class="btn btn medium"
+  data-testid="button"
+>
+  Button text
+</button>
+`;
+
+exports[`Button.test.tsx if link 1`] = `
+<a
+  class="btn medium"
+  data-testid="button"
+  href="https://some-url.com"
+>
+  Link text
+</a>
+`;

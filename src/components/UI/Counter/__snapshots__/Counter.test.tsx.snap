@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter.test.tsx decrement 1`] = `
+<div
+  class="counter"
+  data-testid="counter"
+>
+  <button
+    aria-label="Минус"
+    class="btn decrement"
+    data-testid="counter-decrement"
+    disabled=""
+  />
+  <span
+    class="value"
+    data-testid="counter-value"
+  >
+    60
+     
+  </span>
+  <button
+    aria-label="Плюс"
+    class="btn increment"
+    data-testid="counter-increment"
+  />
+</div>
+`;
+
+exports[`Counter.test.tsx increment 1`] = `
+<div
+  class="counter"
+  data-testid="counter"
+>
+  <button
+    aria-label="Минус"
+    class="btn decrement"
+    data-testid="counter-decrement"
+  />
+  <span
+    class="value"
+    data-testid="counter-value"
+  >
+    120
+     
+  </span>
+  <button
+    aria-label="Плюс"
+    class="btn increment"
+    data-testid="counter-increment"
+  />
+</div>
+`;

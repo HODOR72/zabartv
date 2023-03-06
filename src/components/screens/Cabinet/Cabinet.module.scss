@@ -1,0 +1,169 @@
+.section {
+	position: relative;
+}
+
+.container {
+	padding-top: 35px;
+	padding-bottom: 72px;
+
+	@media (max-width: 768px) {
+		padding-top: 10px;
+		padding-bottom: 55px;
+	}
+
+	@media (max-width: 576px) {
+		padding-bottom: 47px;
+		padding-top: 0;
+	}
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 59px;
+
+	@media (max-width: 1024px) {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	@media (max-width: 576px) {
+		margin-bottom: 32px;
+	}
+}
+
+.left {
+	display: flex;
+	align-items: center;
+	padding-top: 15px;
+
+	@media (max-width: 1200px) {
+		padding-top: 0;
+	}
+
+	@media (max-width: 1024px) {
+		margin-bottom: 50px;
+	}
+
+	@media (max-width: 768px) {
+		margin-bottom: 40px;
+	}
+
+	@media (max-width: 576px) {
+		flex-direction: column;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 22px;
+	}
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 39px;
+
+	@media (max-width: 1200px) {
+		margin-left: 30px;
+	}
+
+	@media (max-width: 576px) {
+		max-width: 100%;
+		margin-left: 0;
+		margin-top: 8px;
+	}
+}
+
+.name {
+	margin: 0;
+	font-weight: 500;
+	font-size: 45px;
+	line-height: 62px;
+	color: #fff;
+	color: var(--color-white);
+	transition: color 0.3s;
+	margin-bottom: 3px;
+
+	@media (max-width: 1200px) {
+		font-size: 40px;
+		line-height: 60px;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 30px;
+		line-height: 50px;
+	}
+
+	@media (max-width: 576px) {
+		font-size: 28px;
+		line-height: 44px;
+	}
+}
+
+.mail {
+	display: flex;
+	align-items: center;
+	color: var(--color-lightt);
+	font-size: 20px;
+	line-height: 36px;
+	margin-bottom: 2px;
+	max-width: 100%;
+
+	&:not(:last-child) {
+		margin-bottom: 5px;
+	}
+
+	svg {
+		display: block;
+		width: 20px;
+		height: 20px;
+		object-fit: cover;
+		flex-shrink: 0;
+		margin-right: 6px;
+	}
+}
+
+.mailText {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.tabs {
+	ul {
+		margin-bottom: 49px;
+
+		@media (max-width: 576px) {
+			margin-bottom: 32px;
+		}
+	}
+
+	li {
+		&:not(:last-child) {
+			margin-right: 45px;
+
+			@media (max-width: 1024px) {
+				margin-right: 27px;
+			}
+		}
+	}
+}
+
+.loader {
+	position: fixed;
+	z-index: 10000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-dark);
+	transition: background-color 0.3s;
+}
+
+.logout {
+	margin-top: 2px;
+}

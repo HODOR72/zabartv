@@ -1,0 +1,50 @@
+.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 66px;
+	height: 66px;
+	border-radius: 100%;
+	background-color: #fff;
+	color: #0b1527;
+	box-shadow: 0 18px 15px rgba(11, 21, 39, 0.1);
+	transition: color 0.3s, background-color 0.3s, border 0.3s;
+
+	@media (max-width: 1024px) {
+		width: 55px;
+		height: 55px;
+	}
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+
+	&[disabled] {
+		background: rgba(255, 255, 255, 0.3);
+		backdrop-filter: blur(50px);
+		color: #fff;
+		cursor: default;
+	}
+
+	&:not([disabled]) {
+		&:hover,
+		&:active {
+			background-color: #fff;
+			color: #0b1527;
+			background: rgba(#fff, 0.8);
+		}
+	}
+
+	svg {
+		width: 22px;
+		height: 22px;
+		fill: currentColor;
+		transform: rotate(-90deg);
+	}
+}
+
+.left {
+	svg {
+		transform: rotate(90deg);
+	}
+}

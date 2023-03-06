@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="31c73cc9-5fcf-420d-b6d6-9c38c26591f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Spinner/Spinner.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Spinner/Spinner.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UI/Spinner/Spinner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/components/Modals/components/RegisterModal/RegisterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/components/Modals/components/RegisterModal/RegisterModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/screens/Cabinet/Cabinet.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/screens/Cabinet/Cabinet.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/screens/Cabinet/Cabinet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/screens/Cabinet/Cabinet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cabinet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cabinet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/user/thunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/user/thunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/getSessionId.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/getSessionId.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EhoMrNdZ9Pe16sF4tUVUNEEDme" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="C:\Users\Евгений\Documents\web\zabartv\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31c73cc9-5fcf-420d-b6d6-9c38c26591f7" name="Changes" comment="" />
+      <created>1663057137194</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663057137194</updated>
+      <workItem from="1663057139046" duration="640000" />
+      <workItem from="1663355663083" duration="598000" />
+      <workItem from="1665223981074" duration="261000" />
+      <workItem from="1665258536583" duration="754000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Portal/Portal.tsx</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

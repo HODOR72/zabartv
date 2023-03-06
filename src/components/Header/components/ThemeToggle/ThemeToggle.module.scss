@@ -1,0 +1,87 @@
+.btn {
+	position: relative;
+	display: block;
+	width: 56px;
+	height: 56px;
+	border-radius: 100%;
+	background-color: #456eff;
+	grid-area: toggle;
+
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		transition: opacity 0.3s;
+	}
+
+	&:before {
+		background-image: url("data:image/svg+xml,%3Csvg width='57' height='57' viewBox='0 0 57 57' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_99_5452' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='57' height='57'%3E%3Crect width='57' height='57' rx='28.5' fill='%23456EFF'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_99_5452)'%3E%3Cpath d='M15.8052 16.74C15.6349 16.1769 15.3534 15.6858 14.9802 15.2865C14.5022 14.743 13.8671 14.3698 13.1534 14.2061C12.7933 12.5692 11.785 11.3907 10.3511 10.952C8.79277 10.4675 6.98566 10.9389 5.85294 12.124C4.85772 13.1651 4.53034 14.599 4.91665 16.1245C3.60714 16.4454 2.95894 17.5388 2.88692 18.5798C2.88037 18.6519 2.88037 18.7173 2.88037 18.7828C2.88037 20.0138 3.68571 21.3953 5.47973 21.5262H12.276C13.2058 21.5262 14.0963 21.1792 14.7772 20.5572C15.8444 19.6209 16.2373 18.1608 15.8052 16.74Z' fill='%23CCD7FF'/%3E%3Cpath d='M63.3359 42.7263C63.0295 42.1069 62.5227 41.5667 61.8509 41.1274C60.9906 40.5296 59.8474 40.1191 58.5628 39.939C57.9146 38.1385 56.0996 36.8421 53.5186 36.3595C50.7136 35.8265 47.4608 36.3451 45.4219 37.6487C43.6305 38.7939 43.0412 40.3712 43.7366 42.0493C41.3795 42.4022 40.2127 43.605 40.0831 44.7501C40.0713 44.8294 40.0713 44.9014 40.0713 44.9734C40.0713 46.3274 41.5209 47.8471 44.7501 47.9912H56.9835C58.657 47.9912 60.2599 47.6094 61.4856 46.9252C63.4066 45.8953 64.1137 44.2892 63.3359 42.7263Z' fill='%23CCD7FF'/%3E%3C/g%3E%3C/svg%3E%0A");
+	}
+
+	&:after {
+		opacity: 0;
+		background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle opacity='0.3' cx='35.0004' cy='13.2216' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='35.0004' cy='22.5561' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='13.2231' cy='28.7778' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='30.3325' cy='44.3339' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='41.2231' cy='42.7778' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='44.3325' cy='30.3339' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='47.4438' cy='14.7778' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='31.8891' cy='5.44477' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='14.7778' cy='44.3339' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='36.5551' cy='48.9995' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='24.1118' cy='8.5561' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='17.8891' cy='16.3339' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='10.1118' cy='20.9995' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='8.55512' cy='36.5561' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='25.6665' cy='50.5561' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='14.7778' cy='10.1108' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='47.4438' cy='38.1108' r='0.777778' fill='%23E3E0C2'/%3E%3Ccircle opacity='0.3' cx='47.4438' cy='22.5561' r='0.777778' fill='%23E3E0C2'/%3E%3C/svg%3E%0A");
+	}
+
+	.icon {
+		&:first-child {
+			opacity: 0;
+		}
+	}
+
+	svg {
+		display: block;
+		width: 28px;
+		height: 28px;
+		object-fit: cover;
+	}
+}
+
+.icon {
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 28px;
+	height: 28px;
+	transition: opacity 0.3s, visibility 0.3s;
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+[data-theme='dark'] .btn {
+	background-color: #0f1b44;
+
+	&:before {
+		opacity: 0;
+	}
+
+	&:after {
+		opacity: 1;
+	}
+
+	.icon {
+		&:first-child {
+			opacity: 1;
+		}
+
+		&:last-child {
+			opacity: 0;
+		}
+	}
+}

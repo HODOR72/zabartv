@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField.test.tsx tests 1`] = `
+<input
+  class="textField"
+  data-testid="input"
+/>
+`;

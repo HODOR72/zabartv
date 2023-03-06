@@ -1,0 +1,22 @@
+.prev,
+.next {
+	position: absolute;
+	z-index: 2;
+	top: 36%;
+}
+
+.prev {
+	left: 0;
+	right: auto;
+	transform: translateX(-50%);
+}
+
+.next {
+	left: auto;
+	right: 0;
+	transform: translateX(50%);
+}
+
+.slider {
+	overflow: visible;
+}

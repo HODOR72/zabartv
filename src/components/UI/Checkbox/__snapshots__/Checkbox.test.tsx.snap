@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox.test.tsx if checked 1`] = `
+<input
+  class="input"
+  data-testid="checkbox-input"
+  type="checkbox"
+/>
+`;

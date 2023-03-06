@@ -1,0 +1,40 @@
+.list {
+	position: absolute;
+	top: calc(100% + 15px);
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	backdrop-filter: blur(22.5px);
+	border-radius: 25px;
+	padding: 28px 25px 23px;
+
+	@media (max-width: 576px) {
+		left: 20px;
+		top: 100%;
+		width: calc(100% - 40px);
+	}
+
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -5px;
+		left: 52px;
+		backdrop-filter: blur(22.5px);
+		background-color: #fff;
+		width: 23px;
+		height: 23px;
+		transform: rotate(-45deg);
+
+		@media (max-width: 576px) {
+			top: 0;
+		}
+	}
+}
+
+.message {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 25px;
+	color: #0b1527;
+}

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CabinetInput.tsx tests 1`] = `
+<input
+  class="input"
+  data-testid="cabinet-input"
+  type="text"
+  value=""
+/>
+`;

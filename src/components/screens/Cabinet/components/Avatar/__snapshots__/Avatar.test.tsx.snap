@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar.test.tsx tests 1`] = `
+<div
+  class="avatar"
+  data-testid="avatar"
+>
+  F
+</div>
+`;

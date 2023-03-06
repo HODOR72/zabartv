@@ -1,0 +1,47 @@
+.container {
+	padding-top: 24px;
+	padding-bottom: 102px;
+
+	@media (max-width: 1024px) {
+		padding-top: 40px;
+	}
+
+	@media (max-width: 768px) {
+		padding-top: 20px;
+	}
+
+	@media (max-width: 576px) {
+		padding-top: 0;
+		padding-bottom: 70px;
+	}
+}
+
+.title {
+	margin-bottom: 40px;
+
+	@media (max-width: 1024px) {
+		margin-bottom: 30px;
+	}
+
+	@media (max-width: 768px) {
+		margin-bottom: 20px;
+	}
+
+	@media (max-width: 576px) {
+		margin-bottom: 16px;
+	}
+}
+
+.tabs {
+	ul {
+		margin-bottom: 72px;
+
+		@media (max-width: 1024px) {
+			margin-bottom: 50px;
+		}
+
+		@media (max-width: 576px) {
+			margin-bottom: 38px;
+		}
+	}
+}
