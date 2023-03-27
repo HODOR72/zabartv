@@ -30,7 +30,7 @@ export const Category = () => {
 
 					return {
 						txt: title,
-						content: <CategoryCarousel data={films} />,
+						content: <CategoryCarousel data={films} txt={title} />,
 					};
 				});
 				return (

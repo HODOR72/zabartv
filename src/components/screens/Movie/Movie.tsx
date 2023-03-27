@@ -44,6 +44,7 @@ export const Movie = () => {
 	}: any = {
 		...data[0],
 	};
+
 	const categories = catalogs?.map((cat: ICatalog) => {
 		return cat.content.title_in_nav;
 	});
@@ -51,7 +52,7 @@ export const Movie = () => {
 
 	const image = `${img_base_url}/${img_path}`;
 	const watchMovie = () => {
-		if (customer_group) {
+		if (customer_group == 2) {
 			return showSubscribeEmptyModal(true);
 		}
 		if (parts && parts.length > 0) {
@@ -120,7 +121,7 @@ export const Movie = () => {
 								<></>
 							)}
 
-							{options && options.length ? (
+							{options && options.length && options[0]?.option_value ? (
 								options?.map((option: IOption) => (
 									<span key={option.filter_id} className={styles.infoItem}>
 										{option.option_value}

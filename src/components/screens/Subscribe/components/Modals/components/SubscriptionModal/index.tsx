@@ -43,7 +43,6 @@ const SubscriptionModal = () => {
 				}&payment_order_id=${paymentMethod}`,
 			});
 			push(data.payment_url);
-			console.log(data);
 			return data;
 		} catch (error) {
 			console.error(error);
@@ -74,8 +73,10 @@ const SubscriptionModal = () => {
 				<div className={styles.left}>{t('Select a Payment Method')}</div>
 				<div className={styles.right}>
 					<Title className={styles.top} size="small">
-						{`${value !== 360 ? value + ' дней ' : 1 + ' год '}`}
-						<span>за {packageId == 2 ? 30 : (value / 30) * 10}€</span>
+						{`${value !== 360 ? value + t('days') : 1 + t('year')}`}
+						<span>
+							{t('behind')} {packageId == 2 ? 30 : (value / 30) * 10}€
+						</span>
 					</Title>
 					<Title className={styles.bottom} size="small">
 						<s>{packageId == 2 ? 30 * 2 : (value / 30) * 10 * 2}€</s>

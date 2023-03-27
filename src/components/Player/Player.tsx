@@ -46,7 +46,12 @@ export const Player = () => {
 						<CloseIcon />
 					</ButtonBase>
 					{!url.includes('zabar') ? (
-						<iframe src={url} name="iframe_a" className={styles.iframe} />
+						<iframe
+							src={`${url}?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1`}
+							allow="autoplay; encrypted-media"
+							name="iframe_a"
+							className={styles.iframe}
+						/>
 					) : (
 						<Plyr
 							autoPlay

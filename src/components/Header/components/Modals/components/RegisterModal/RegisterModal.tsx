@@ -27,12 +27,12 @@ export const RegisterModal = () => {
 	const { push } = useRouter();
 	const { setUser } = useTypedActions((state) => state.auth);
 	const handleClose = () => showRegisterModal(false);
-
+	const { t } = useTranslation();
 	const schema = Yup.object().shape({
-		password: Yup.string().min(6, shortPasswordMessage).required(requiredFieldMessage),
+		password: Yup.string().min(6, t(shortPasswordMessage)).required(t(requiredFieldMessage)),
 		password_confirm: Yup.string()
-			.required(requiredFieldMessage)
-			.oneOf([Yup.ref('password'), null], doNotMatchPasswordsMessage),
+			.required(t(requiredFieldMessage))
+			.oneOf([Yup.ref('password'), null], t(doNotMatchPasswordsMessage)),
 	});
 
 	const {
@@ -86,7 +86,6 @@ export const RegisterModal = () => {
 				setErrorMessages(data);
 			} else {
 				setUser(data);
-				console.log(localStorage.getItem('isSubscribed'));
 				if (localStorage.getItem('isSubscribed')) {
 					push(RoutesEnum.Subscribe);
 					localStorage.removeItem('isSubscribed');
@@ -100,7 +99,6 @@ export const RegisterModal = () => {
 			console.error(error);
 		}
 	});
-	const { t } = useTranslation();
 
 	return (
 		<Modal className={styles.modal} fullscreen open={isVisibleRegisterModal} onClose={handleClose}>

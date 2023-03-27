@@ -4,7 +4,7 @@ import { IMovieItem } from '@/types/IMovieItem';
 import { Grid } from '@/UI/Grid/Grid';
 import { MovieItem } from '@/UI/MovieItem/MovieItem';
 
-export const Page5= () => {
+export const Page5 = () => {
 	const { data } = useTypedSelector((state) => state.category);
 
 	const { content, child_items } = { ...data[0] };

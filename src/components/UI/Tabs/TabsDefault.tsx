@@ -21,7 +21,7 @@ export const TabsDefault: FC<TabsProps> = ({ className, tabs }) => {
 		<ReactTabs selectedTabClassName={styles.selected} className={classNames(styles.tabs, className)}>
 			<div className={styles.wrapper}>
 				<TabList className={styles.list}>
-					{tabs.map((el: TabItem) => {
+					{tabs?.map((el: TabItem) => {
 						const { txt, condition = true } = el;
 
 						return (
@@ -32,7 +32,7 @@ export const TabsDefault: FC<TabsProps> = ({ className, tabs }) => {
 					})}
 				</TabList>
 			</div>
-			{tabs.map((el: TabItem) => {
+			{tabs?.map((el: TabItem) => {
 				const { txt, content, condition = true } = el;
 
 				return (

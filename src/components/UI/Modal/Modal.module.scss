@@ -29,14 +29,19 @@
 
 	.content {
 		&:not(.grade) {
-			width: 513px;
+			width: 650px;
 
-			@media (max-width: 576px) {
+			@media (max-width: 650px) {
 				width: 100%;
+			}
+			@media (max-width: 420px) {
+				.tabs h2 {
+					font-size: 24px;
+				}
 			}
 		}
 
-		@media (max-width: 576px) {
+		@media (max-width: 650px) {
 			justify-content: center;
 			height: 100%;
 			border-radius: 0;
@@ -47,6 +52,7 @@
 	}
 
 	.btn {
+		cursor: pointer;
 		max-width: 100%;
 		width: 100%;
 	}
@@ -155,6 +161,7 @@
 	}
 
 	.btn {
+		cursor: pointer;
 		max-width: initial;
 
 		@media (max-width: 576px) {
@@ -206,6 +213,7 @@
 	}
 
 	.btn {
+		cursor: pointer;
 		width: auto;
 		min-width: 347px;
 
@@ -284,6 +292,7 @@
 }
 
 .btn {
+	cursor: pointer;
 	max-width: 347px;
 	margin: 0 auto;
 	padding: 26px 30px 23px;

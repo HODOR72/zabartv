@@ -22,7 +22,6 @@ export const MovieItem: FC<MovieItemProps> = ({ item, favourite }) => {
 	const url = `${preview_base_url}/${preview_path}`;
 
 	const { title } = content;
-
 	const dispatch = useAppDispatch();
 
 	const handleToggleFavorites = async () => {
@@ -40,7 +39,6 @@ export const MovieItem: FC<MovieItemProps> = ({ item, favourite }) => {
 	};
 
 	const { t } = useTranslation();
-
 	return (
 		<div className={styles.item}>
 			<div className={styles.top}>
@@ -55,7 +53,12 @@ export const MovieItem: FC<MovieItemProps> = ({ item, favourite }) => {
 					</ButtonBase>
 				)}
 			</div>
-			<span className={styles.status}>{t(getType(type))}</span>
+			{/* <span className={styles.status}>{t(getType(type))}</span>
+			{item?.catalogs?.map((el) => (
+				<span key={el?.id} className={styles.status}>
+					{t(el?.content?.title_in_nav)}
+				</span>
+			))} */}
 			<NextLink href={`/movie/${slug}`}>
 				<a className={styles.title}>{title}</a>
 			</NextLink>

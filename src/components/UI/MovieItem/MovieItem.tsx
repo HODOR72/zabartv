@@ -16,14 +16,14 @@ import { useTranslation } from 'next-i18next';
 interface MovieItemProps {
 	item: IMovieItem;
 	href?: string;
+	txt?: any;
 }
 
-export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
+export const MovieItem: FC<MovieItemProps> = ({ item, href, txt }) => {
 	const url = `${item?.preview_base_url}/${item?.preview_path}`;
 	const { t } = useTranslation();
-	const genre = t('Comedy');
 	const chip = getType(item?.type);
-	const status = 'Подписка';
+	const status = item?.customer_group === 2 ? t('subscribe') : t('free');
 	return (
 		<NextLink href={href || `/movie/${item?.slug}`}>
 			<a className={styles.item}>
@@ -33,10 +33,10 @@ export const MovieItem: FC<MovieItemProps> = ({ item, href }) => {
 						<span className={styles.rating}>{Number(item?.rating).toFixed(1)}</span>
 					)}
 					<div className={styles.content}>
-						<div className={styles.chips}>
-							<Chip className={styles.chip}>{genre}</Chip>
+						{/* <div className={styles.chips}>
 							<Chip className={styles.chip}>{t(chip)}</Chip>
-						</div>
+							<Chip className={styles.chip}>{txt}</Chip>
+						</div> */}
 						<div className={styles.info}>
 							{chip !== 'TV' && (
 								<>

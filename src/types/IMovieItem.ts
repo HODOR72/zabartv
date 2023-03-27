@@ -28,5 +28,6 @@ export interface IMovieItem {
 	slug?: string;
 	sort?: number;
 	type?: number;
+	customer_group?: number
 	visible?: number;
 }

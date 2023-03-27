@@ -37,7 +37,7 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			if (tabs[0]?.txt !== 'Настройки') {
+			if (tabs[0]?.txt !== 'Настройки' && tabs[0]?.txt !== 'Нисдар') {
 				setActiveTab(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
 			}
 		}, 1000);
@@ -45,7 +45,7 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 
 	const handleChangeCategory = async (id: any) => {
 		setActiveTab(id);
-		if (tabs[0]?.txt !== 'Настройки') {
+		if (tabs[0]?.txt !== 'Настройки' && tabs[0]?.txt !== 'Нисдар') {
 			localStorage.setItem(`lastCategory-${tabs[0].txt}`, String(id));
 		}
 	};
@@ -90,7 +90,7 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 		>
 			<div className={styles.wrapper}>
 				<TabList className={styles.list}>
-					{tabs.map((el: TabItem) => {
+					{tabs?.map((el: TabItem) => {
 						const { txt, condition = true } = el;
 						return (
 							<Fragment key={txt}>
@@ -100,9 +100,8 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 					})}
 				</TabList>
 			</div>
-			{tabs.map((el: TabItem) => {
+			{tabs?.map((el: TabItem) => {
 				let { txt, content, id, condition = true } = el;
-
 				const currPage = id && currentPage[id] ? currentPage[id] : 1;
 				return (
 					<Fragment key={txt}>

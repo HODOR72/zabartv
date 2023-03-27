@@ -24,12 +24,12 @@ export const Recovery = () => {
 	} = useRouter();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [errorMessages, setErrorMessages] = useState<string[]>([]);
-
+	const { t } = useTranslation();
 	const schema = Yup.object().shape({
-		password: Yup.string().min(6, shortPasswordMessage).required(requiredFieldMessage),
+		password: Yup.string().min(6, t(shortPasswordMessage)).required(t(requiredFieldMessage)),
 		password_confirm: Yup.string()
-			.required(requiredFieldMessage)
-			.oneOf([Yup.ref('password'), null], doNotMatchPasswordsMessage),
+			.required(t(requiredFieldMessage))
+			.oneOf([Yup.ref('password'), null], t(doNotMatchPasswordsMessage)),
 	});
 
 	const {
@@ -85,7 +85,6 @@ export const Recovery = () => {
 			reset();
 		}
 	});
-	const { t } = useTranslation();
 	return (
 		<section className={styles.section}>
 			<div className={classNames('container', styles.container)}>

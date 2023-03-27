@@ -15,9 +15,8 @@ export const Favourites: FC<FavouritesProps> = ({ favorites }) => {
 
 	const FavoritesList = (
 		<Grid>
-			{favorites.map((el) => {
+			{favorites?.map((el) => {
 				const item = el[0];
-
 				return <MovieItem favourite key={item.id} item={item} />;
 			})}
 		</Grid>

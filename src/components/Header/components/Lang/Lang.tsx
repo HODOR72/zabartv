@@ -33,7 +33,7 @@ export const Lang: FC<LangProps> = ({ className }) => {
 			className={classNames(styles.lang, active && styles.active, className)}
 		>
 			<ul className={classNames('list-reset', styles.list)}>
-				{items.map((el) => (
+				{items?.map((el) => (
 					<li
 						key={el.locale}
 						className={classNames(styles.item, locale === el.locale && styles.selected)}

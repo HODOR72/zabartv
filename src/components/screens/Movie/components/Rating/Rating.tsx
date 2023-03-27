@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import styles from './Rating.module.scss';
 import { baseApi } from '@/api';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { GradeModal } from '../FavoriteButton/GradeModal/GradeModal';
+import { useTranslation } from 'next-i18next';
 
 interface RatingProps {
 	rating: string;
@@ -18,6 +18,8 @@ export const Rating: FC<RatingProps> = ({ className, rating }) => {
 	const { showGradeModal } = useTypedActions((state) => state.modal);
 	const { data } = useTypedSelector((state) => state.movie);
 	const { id } = { ...data[0] };
+
+	const { t } = useTranslation();
 
 	const handleShowModal = () => showGradeModal(true);
 
@@ -41,16 +43,16 @@ export const Rating: FC<RatingProps> = ({ className, rating }) => {
 			<div className={classNames(styles.item, className)}>
 				<span className={styles.rating}>{rating}</span>
 				<div className={styles.text}>
-					<span className={styles.title}>Рейтинг ZabarTV</span>
+					<span className={styles.title}>{t('Rating ZabarTV')}</span>
 					{userRating ? (
 						<div className={styles.bottom}>
 							<span className={styles.caption}>
-								Ваша оценка&nbsp;<span>{userRating}</span>
+								{t('Your mark')}&nbsp;<span>{userRating}</span>
 							</span>
 						</div>
 					) : (
 						<Link onClick={handleShowModal} as="button" className={styles.btn} size="sm">
-							Оценить
+							{t('Estimate')}
 						</Link>
 					)}
 				</div>

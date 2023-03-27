@@ -36,7 +36,7 @@ export const Menu = () => {
 				</div>
 				<nav className={styles.nav}>
 					<ul className={classNames('list-reset', styles.list)}>
-						{navMenu.map((item) => {
+						{navMenu?.map((item) => {
 							const { content, id, slug } = item;
 
 							return (

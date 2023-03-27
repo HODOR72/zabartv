@@ -8,7 +8,6 @@ export const Movies = () => {
 	const { data } = useTypedSelector((state) => state.category);
 
 	const { content, child_items } = { ...data[0] };
-
 	const tabs =
 		child_items?.map((tab, idx) => {
 			const txt = tab.content.title;
@@ -22,7 +21,6 @@ export const Movies = () => {
 						items={data}
 						renderItem={(el) => {
 							const item = el[0];
-
 							return <MovieItem href={`/movies/${item?.slug}`} item={item} />;
 						}}
 					/>

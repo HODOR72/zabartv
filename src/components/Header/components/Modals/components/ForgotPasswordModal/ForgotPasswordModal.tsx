@@ -18,9 +18,9 @@ export const ForgotPasswordModal = () => {
 	const { showForgotPasswordModal } = useTypedActions((state) => state.modal);
 	const { ModalTitle, ModalDesc, ModalInputs, ModalInput, ModalButton, ModalErrorMessage } = Modal;
 	const handleClose = () => showForgotPasswordModal(false);
-
+	const { t } = useTranslation();
 	const schema = Yup.object().shape({
-		email: Yup.string().email(incorrectlyFieldMessage).required(requiredFieldMessage),
+		email: Yup.string().email(t(incorrectlyFieldMessage)).required(t(requiredFieldMessage)),
 	});
 
 	const {
@@ -53,7 +53,6 @@ export const ForgotPasswordModal = () => {
 		}
 	};
 
-	const { t } = useTranslation();
 
 	const handleSubmitForm = handleSubmit(async (form) => {
 		const { email } = form;

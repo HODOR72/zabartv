@@ -12,10 +12,10 @@ export const RegisterContent = ({ authState }: { authState: string }) => {
 
 	const { setEmail, setName } = useTypedActions((state) => state.auth);
 	const { showAuthModal, showRegisterModal } = useTypedActions((state) => state.modal);
-
+	const { t } = useTranslation();
 	const schema = Yup.object().shape({
-		email: Yup.string().email(incorrectlyFieldMessage).required(requiredFieldMessage),
-		name: Yup.string().required(requiredFieldMessage),
+		email: Yup.string().email(t(incorrectlyFieldMessage)).required(t(requiredFieldMessage)),
+		name: Yup.string().required(t(requiredFieldMessage)),
 	});
 
 	const {
@@ -39,7 +39,6 @@ export const RegisterContent = ({ authState }: { authState: string }) => {
 		showAuthModal(false);
 		showRegisterModal(true);
 	});
-	const { t } = useTranslation();
 	useEffect(clearErrors, [authState]);
 
 	return (

@@ -15,7 +15,7 @@ export const Views: FC<ViewsProps> = ({ viewed }) => {
 
 	const ViewsList = (
 		<Grid>
-			{viewed.map((el) => {
+			{viewed?.map((el) => {
 				const item = el[0];
 
 				return <MovieItem key={item.id} item={item} />;

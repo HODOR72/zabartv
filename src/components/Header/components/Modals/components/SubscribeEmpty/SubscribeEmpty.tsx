@@ -13,13 +13,12 @@ export const SubscribeEmpty = () => {
 	const handleClose = () => showSubscribeEmptyModal(false);
 
 	const { t } = useTranslation();
-	const { data } = useTypedSelector((state: any) => state.user);
 
 	const { showAuthModal, showSubscribeEmptyModal } = useTypedActions((state) => state.modal);
 	const { push } = useRouter();
 
 	const handleSubmit = () => {
-		if (data?.email !== '') {
+		if (localStorage.getItem('zabar_user_id')) {
 			push(RoutesEnum.Subscribe);
 		} else {
 			showAuthModal(true);

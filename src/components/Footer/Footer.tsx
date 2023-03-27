@@ -13,7 +13,6 @@ interface FooterProps {
 
 export const Footer: FC<FooterProps> = ({ sticky }) => {
 	const { footerMenu, navMenu } = useTypedSelector((state) => state.menu);
-	console.log(navMenu);
 	const menu = [
 		{
 			title: 'About us',
@@ -31,13 +30,13 @@ export const Footer: FC<FooterProps> = ({ sticky }) => {
 			<div className={styles.top}>
 				<div className={classNames('container', styles.topContainer)}>
 					<div className={styles.left}>
-						{menu.map((item) => {
+						{menu?.map((item) => {
 							const { title, items } = item;
 							return (
 								<div key={title} className={styles.col}>
 									<h2 className={styles.title}>{t(title)}</h2>
 									<ul className={classNames('list-reset', styles.list)}>
-										{items.map((el) => (
+										{items?.map((el) => (
 											<li key={el.id} className={styles.item}>
 												{/* @ts-ignore */}
 												<NextLink href={el.full_link.split('/').at(-1)}>

@@ -4,18 +4,19 @@ import { IPart } from '@/types/IPart';
 import classNames from 'classnames';
 import styles from './Seasons.module.scss';
 import { TabsDefault } from '@/UI/Tabs/TabsDefault';
-
+import { useTranslation } from 'next-i18next';
 interface SeasonsProps {
 	parts: IPart[] | undefined;
 	customerGroup: any;
 }
 
 export const Seasons: FC<SeasonsProps> = ({ parts, customerGroup }) => {
+	const { t } = useTranslation();
 	const tabs =
 		parts?.map((part) => {
-			const txt = `${part.season_number} сезон`;
+			const txt = `${part.season_number} ${t('season')}`;
 
-			const items = part?.season_data.map((item, idx) => {
+			const items = part?.season_data?.map((item, idx) => {
 				const { mini_description, preview_base_url, preview_path } = item;
 
 				const url = `${preview_base_url}/${preview_path}`;
@@ -24,7 +25,7 @@ export const Seasons: FC<SeasonsProps> = ({ parts, customerGroup }) => {
 				return {
 					poster: url,
 					id,
-					title: `Серия ${id}`,
+					title: `${t('seria')} ${id}`,
 					url: item.stream_film_link,
 					desc: mini_description,
 					customerGroup,
