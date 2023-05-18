@@ -48,13 +48,13 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 					<Title level="h2" size="medium" className={styles.title}>
 						{t(title)}
 						&nbsp;{t('behind')}
-						<span>&nbsp;{normalPrice}€</span>
+						<span>&nbsp;{normalPrice}$</span>
 					</Title>
 					<p className={styles.desc}>
 						{isMonthPackage ? t('Or') : t('one time')}
 						&nbsp;{convertPrice()}
 						<span>
-							€&nbsp;
+							$&nbsp;
 							{isMonthPackage ? t('for 12 months') : t('per month')}
 						</span>
 					</p>

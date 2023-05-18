@@ -19,36 +19,36 @@ interface TabsProps {
 	setNewFilms?: any;
 }
 
-const getStoreLocal = (name: string) => {
-	if (typeof localStorage !== 'undefined') {
-		const ls = localStorage.getItem(name);
-		return ls ? JSON.parse(ls) : null;
-	}
-	return null;
-};
+// const getStoreLocal = (name: string) => {
+// 	if (typeof localStorage !== 'undefined') {
+// 		const ls = localStorage.getItem(name);
+// 		return ls ? JSON.parse(ls) : null;
+// 	}
+// 	return null;
+// };
 
 export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 	// ${tabs[0].txt - unique identificator
 
-	const [activeTab, setActiveTab] = useState(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
+	// const [activeTab, setActiveTab] = useState(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
 	const [totalPages, setTotalPages] = useState<any>({});
 	const [currentPage, setCurrentPage] = useState<any>({});
 	const [paginationLink, setPaginationLink] = useState<any>({});
 
-	useEffect(() => {
-		setTimeout(() => {
-			if (tabs[0]?.txt !== 'Настройки' && tabs[0]?.txt !== 'Нисдар') {
-				setActiveTab(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
-			}
-		}, 1000);
-	}, []);
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		if (tabs[0]?.txt !== 'Настройки' && tabs[0]?.txt !== 'Нисдар') {
+	// 			setActiveTab(getStoreLocal(`lastCategory-${tabs[0]?.txt}`));
+	// 		}
+	// 	}, 1000);
+	// }, []);
 
-	const handleChangeCategory = async (id: any) => {
-		setActiveTab(id);
-		if (tabs[0]?.txt !== 'Настройки' && tabs[0]?.txt !== 'Нисдар') {
-			localStorage.setItem(`lastCategory-${tabs[0].txt}`, String(id));
-		}
-	};
+	// const handleChangeCategory = async (id: any) => {
+	// 	setActiveTab(id);
+	// 	if (tabs[0]?.txt !== 'Настройки' && tabs[0]?.txt !== 'Нисдар') {
+	// 		localStorage.setItem(`lastCategory-${tabs[0].txt}`, String(id));
+	// 	}
+	// };
 
 	const handleShowMore = async (id: any) => {
 		const pagLink = paginationLink[id] ? paginationLink[id] : null;
@@ -83,14 +83,13 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 	return (
 		<ReactTabs
 			selectedTabClassName={styles.selected}
-			selectedIndex={activeTab ? +activeTab : 0}
-			// @ts-ignore
-			onSelect={(id) => handleChangeCategory(id)}
+			// selectedIndex={activeTab ? +activeTab : 0}
+			// onSelect={(id) => handleChangeCategory(id)}
 			className={classNames(styles.tabs, className)}
 		>
 			<div className={styles.wrapper}>
 				<TabList className={styles.list}>
-					{tabs?.map((el: TabItem) => {
+					{tabs && tabs?.map((el: TabItem) => {
 						const { txt, condition = true } = el;
 						return (
 							<Fragment key={txt}>
@@ -100,7 +99,7 @@ export const Tabs: FC<TabsProps> = ({ className, tabs, setNewFilms }) => {
 					})}
 				</TabList>
 			</div>
-			{tabs?.map((el: TabItem) => {
+			{tabs && tabs?.map((el: TabItem) => {
 				let { txt, content, id, condition = true } = el;
 				const currPage = id && currentPage[id] ? currentPage[id] : 1;
 				return (

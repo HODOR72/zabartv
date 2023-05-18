@@ -18,7 +18,7 @@ export const Purchases = () => {
 			const periodStartPath = convertTimestampToDate(el.start_date, 'DD.MM');
 			const periodFinishPath = convertTimestampToDate(el.finish_date, 'DD.MM');
 			const period = `с ${periodStartPath}. по ${periodFinishPath}`;
-			const price = `${Number(el.package_price)}€`;
+			const price = `${Number(el.package_price)}$`;
 
 			return { date, period, price };
 		});

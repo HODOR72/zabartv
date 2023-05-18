@@ -20,7 +20,7 @@ const SubscriptionModal = () => {
 	const [paymentMethod, setPaymentMethod] = useState<string>('card');
 	const [value, setValue] = useState<number>(0);
 	const [packageId, setPackageId] = useState<number>(0);
-
+	const [packages, setPackages] = useState();
 	const { isVisibleSubscriptionModal } = useTypedSelector((state: any) => state.modal);
 
 	const { showSubscriptionModal } = useTypedActions((state: any) => state.modal);
@@ -61,6 +61,20 @@ const SubscriptionModal = () => {
 
 	const { t } = useTranslation();
 
+	const getPackages = async () => {
+		try {
+			const { data } = await axios.get('/packages');
+			setPackages(data);
+		} catch (e: unknown) {
+			console.error(e);
+		}
+	};
+
+	useEffect(() => {
+		getPackages();
+	}, []);
+
+	console.log();
 	return (
 		<Modal
 			// variant="grade"
@@ -70,21 +84,30 @@ const SubscriptionModal = () => {
 			className={styles.modal}
 		>
 			<ModalTitle className={styles.modal_title}>
-				<div className={styles.left}>{t('Select a Payment Method')}</div>
+				<div className={styles.left}>
+					{/* {t('Select a Payment Method')} */}
+				</div>
 				<div className={styles.right}>
 					<Title className={styles.top} size="small">
 						{`${value !== 360 ? value + t('days') : 1 + t('year')}`}
 						<span>
-							{t('behind')} {packageId == 2 ? 30 : (value / 30) * 10}€
+							{t('behind') + ' '} 
+							{/* @ts-ignore */}
+							{packageId == 2 ? +packages?.items[1].price : +packages?.items[0].price * (value / 30) }
+							 $
 						</span>
 					</Title>
 					<Title className={styles.bottom} size="small">
-						<s>{packageId == 2 ? 30 * 2 : (value / 30) * 10 * 2}€</s>
+						<s>
+							{/* @ts-ignore */}
+							{packageId == 2 ? +packages?.items[1].price * 2 : +packages?.items[0].price * (value / 30) * 2}
+							$
+						</s>
 					</Title>
 				</div>
 			</ModalTitle>
 			<div className={styles.content}>
-				<button
+				{/* <button
 					className={classNames(
 						styles.paymentMethod,
 						paymentMethod === 'card' ? styles.active : styles.noactive
@@ -97,27 +120,25 @@ const SubscriptionModal = () => {
 						</span>
 						<span className={styles.text}>{t('By card through bank acquiring')}</span>
 					</div>
-					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
-				</button>
+					<span className={styles.right}>{packageId == 2 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
+				</button> */}
 				<button
 					className={classNames(
 						styles.paymentMethod,
 						paymentMethod === 'bitcoin' ? styles.active : styles.noactive,
 						styles.twoBtn
 					)}
+					
 					onClick={() => setPaymentMethod('bitcoin')}
 				>
 					<div className={styles.left}>
 						<span className={styles.icon}>
 							<BitcoinIcon />
 						</span>
-						<span className={styles.img}>
-							<Image src={MasterCardVisa} width={31} height={36} />
-						</span>
-
-						<span className={styles.text}>{t('Cryptocurrency and card')}</span>
+						<span className={styles.text}>{t('Cryptocurrency')}</span>
 					</div>
-					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
+					{/* @ts-ignore */}
+					<span className={styles.right}>{packageId == 2 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
 				</button>
 			</div>
 			<ModalButton className={styles.buy} onClick={buySubscription}>
