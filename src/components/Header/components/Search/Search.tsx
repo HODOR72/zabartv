@@ -21,8 +21,8 @@ export const Search: FC<SearchProps> = ({ className }) => {
 	const { setVisibleSearch } = useTypedActions((state) => state.search);
 	const [value, setValue] = useState<string>('');
 	const { debouncedValue, setDebouncedValue } = useDebounce(value.trim(), 400);
-	const searchRef = useRef<HTMLDivElement>(null);
-	const inputRef = useRef<HTMLInputElement>(null);
+	const searchRef = useRef<HTMLDivElement | null>(null);
+	const inputRef = useRef<HTMLInputElement | null>(null);
 	const router = useRouter();
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,6 +50,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
 
 	const isActive = debouncedValue && isSearchVisible;
 	const { t } = useTranslation();
+
 	return (
 		<div
 			ref={searchRef}
@@ -62,7 +63,7 @@ export const Search: FC<SearchProps> = ({ className }) => {
 				type="search"
 				value={value}
 				onChange={handleChange}
-				placeholder={t('Search')}
+				placeholder={t ? t('Search') : ''}
 			/>
 			<ButtonBase type="button" className={styles.close} onClick={handleClose}>
 				<CloseIcon />

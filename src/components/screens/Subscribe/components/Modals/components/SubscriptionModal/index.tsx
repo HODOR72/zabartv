@@ -29,6 +29,7 @@ const SubscriptionModal = () => {
 	const { push } = useRouter();
 	const { ModalTitle, ModalDesc, ModalButton } = Modal;
 
+	
 	const buySubscription = async () => {
 		try {
 			const { data } = await axios({
@@ -38,7 +39,9 @@ const SubscriptionModal = () => {
 				},
 				method: 'post',
 				// УБРАТЬ 2 : 2 ПРИ РАБОТОСПОСОБНОСТИ КАРТЫ
-				data: `user_id=${localStorage.getItem('zabar_user_id')}&package_id=3&payment_method=${
+				data: `user_id=${localStorage.getItem(
+					'zabar_user_id'
+				)}&package_id=3&subscribe_period=${value}&payment_method=${
 					paymentMethod === 'card' ? 2 : 2
 				}&payment_order_id=${paymentMethod}`,
 			});

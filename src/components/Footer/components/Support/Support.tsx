@@ -7,20 +7,29 @@ import { useEffect, useState } from 'react';
 
 export const Support = () => {
 	const { t } = useTranslation();
-	const [data, setData]: any = useState([]);
+	const [data, setData] = useState([]);
+
 	useEffect(() => {
 		const fetchData = async () => {
-			let { data } = await axios({
-				url: `contactsdata/list`,
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				method: 'get',
-			});
-			setData(data);
+			try {
+				const response = await axios.get('contactsdata/list', {
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+				});
+
+				if (response) {
+					setData(response?.data);
+				}
+			} catch (error) {
+				console.error('Failed to fetch data:', error);
+			}
 		};
+
 		fetchData();
 	}, []);
+
+	if (!data || !Array.isArray(data) || data.length < 3) return null;
 
 	return (
 		<div className={styles.item}>
@@ -30,7 +39,8 @@ export const Support = () => {
 			<p className={styles.desc}>
 				{t('We are always ready to help you. Our operators are online 24/7')}
 			</p>
-			<a href={data[2]?.content.link_value} className={styles.link}>
+			{/* @ts-ignore */}
+			<a href={data[2]?.content?.link_value} className={styles.link}>
 				{t('WRITE TO SUPPORT')}
 				<TelegramIcon />
 			</a>

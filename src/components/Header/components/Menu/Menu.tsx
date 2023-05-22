@@ -36,17 +36,17 @@ export const Menu = () => {
 				</div>
 				<nav className={styles.nav}>
 					<ul className={classNames('list-reset', styles.list)}>
-						{navMenu?.map((item) => {
-							const { content, id, slug } = item;
-
-							return (
-								<li key={id} className={styles.item}>
-									<NextLink href={`/${slug}`}>
-										<a className={styles.link}>{content.title_in_nav}</a>
-									</NextLink>
-								</li>
-							);
-						})}
+						{navMenu &&
+							navMenu?.length &&
+							navMenu?.map((item) => {
+								return (
+									<li key={item?.id} className={styles.item}>
+										<NextLink href={`/${item?.slug}`}>
+											<a className={styles.link}>{item?.content.title_in_nav}</a>
+										</NextLink>
+									</li>
+								);
+							})}
 					</ul>
 				</nav>
 				<SubscribeButton className={styles.btn} />
