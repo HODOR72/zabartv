@@ -28,7 +28,6 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 		period,
 		visible,
 	} = card;
-
 	const normalPrice = Number(price);
 	const isMonthPackage = period <= 30;
 
@@ -40,13 +39,12 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 		showSubscriptionModal(true);
 		localStorage.setItem('packet', isMonthPackage ? '1' : '2');
 	};
-
 	return (
 		<>
 			{visible ? (
 				<div className={classNames(styles.card, !isMonthPackage && styles.year)}>
 					<Title level="h2" size="medium" className={styles.title}>
-						{t(title)}
+						{title}
 						&nbsp;{t('behind')}
 						<span>&nbsp;{normalPrice}$</span>
 					</Title>

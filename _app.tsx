@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 
 function MyApp({ Component, ...rest }: AppProps) {
 	const { store, props } = wrapper.useWrappedStore(rest);
+	console.log('updated')
 	return (
 		<Provider store={store}>
 			<ThemeProvider enableSystem={false} defaultTheme="dark">

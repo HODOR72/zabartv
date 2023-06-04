@@ -9,13 +9,14 @@ import 'plyr-react/plyr.css';
 import { useTranslation } from 'next-i18next';
 import Plyr, { PlyrInstance } from 'plyr-react';
 import Hls from 'hls.js';
+
 const qualities = [
 	{ label: '1080p', value: '1080' },
 	{ label: '720p', value: '720' },
 ];
 
 export const Player = () => {
-	const { isVisiblePlayer, url} = useTypedSelector((state) => state.player);
+	const { isVisiblePlayer, url } = useTypedSelector((state) => state.player);
 	const { openPlayer } = useTypedActions((state) => state.player);
 
 	const handleClosePlayer = () => {
@@ -33,36 +34,36 @@ export const Player = () => {
 	const { t } = useTranslation();
 	const ref = useRef<any>(null);
 
-useEffect(() => {
-	const loadVideo = async () => {
-		const video = document.getElementById('plyr') as HTMLVideoElement;
+	useEffect(() => {
+		const loadVideo = async () => {
+			const video = document.getElementById('plyr') as HTMLVideoElement;
 
-		if (Hls.isSupported()) {
-			const hls = new Hls();
-			hls.loadSource(url);
-			hls.attachMedia(video);
+			if (Hls.isSupported()) {
+				const hls = new Hls();
+				hls.loadSource(url);
+				hls.attachMedia(video);
 
-			if (ref?.current && ref?.current?.plyr) {
-				const plyr = ref.current.plyr;
-				if (plyr) {
-					// @ts-ignore
-					plyr.media = video;
+				if (ref?.current && ref?.current?.plyr) {
+					const plyr = ref.current.plyr;
+					if (plyr) {
+						// @ts-ignore
+						plyr.media = video;
+					}
 				}
+
+				hls.on(Hls.Events.MANIFEST_PARSED, function () {
+					(ref.current!.plyr as PlyrInstance).play();
+				});
+			} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+				video.src = url;
+				video.addEventListener('loadedmetadata', function () {
+					video.play();
+				});
 			}
+		};
 
-			hls.on(Hls.Events.MANIFEST_PARSED, function () {
-				(ref.current!.plyr as PlyrInstance).play();
-			});
-		} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-			video.src = url;
-			video.addEventListener('loadedmetadata', function () {
-				video.play();
-			});
-		}
-	};
-
-	loadVideo();
-}, [url]);
+		loadVideo();
+	}, [url]);
 
 	return (
 		<>
@@ -80,16 +81,15 @@ useEffect(() => {
 					>
 						<CloseIcon />
 					</ButtonBase>
-					{(!url.includes('zabar') && !url?.includes('m3u') && !url.includes('troya.tv') )? (
+					{!url.includes('zabar') && !url?.includes('m3u') && !url.includes('troya.tv') ? ( // ПРОВЕРКА НА ТРАНСЛЯЦИИ С ДРУГИХ САЙТОВ
 						<iframe
 							src={`${url}?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1`}
 							allow="autoplay; encrypted-media"
 							name="iframe_a"
 							className={styles.iframe}
 						/>
-					) : !url.includes('m3u') ? (
+					) : !url.includes('m3u') ? ( // ПРОВЕРКА НА ТО, ЧТО ЭТО НЕ ТРАНСЛЯЦИЯ
 						<Plyr
-							autoPlay
 							source={{
 								type: 'video',
 								sources: [
@@ -123,9 +123,10 @@ useEffect(() => {
 								'quality',
 							]}
 							quality={qualities}
+							disableRemotePlayback
 						/>
 					) : (
-						<Plyr
+						<Plyr // ДЕФОЛТ ПЛЕЕР
 							id="plyr"
 							// @ts-ignore
 							source={{} as ['source']}
