@@ -72,14 +72,11 @@
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	gap: 1rem;
 
 	@media (max-width: 1024px) {
 		flex-direction: column;
 		align-items: center;
-
-		.twoBtn {
-			margin-top: 12px;
-		}
 	}
 
 	.paymentMethod {
