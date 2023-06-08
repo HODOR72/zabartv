@@ -26,15 +26,16 @@ const SubscriptionModal = () => {
 	const { showSubscriptionModal } = useTypedActions((state: any) => state.modal);
 
 	const handleClose = () => showSubscriptionModal(false);
-	const { push } = useRouter();
+	const router = useRouter();
 	const { ModalTitle, ModalButton } = Modal;
 
 	const buySubscription = async () => {
 		try {
-			setIsLoading(true)
+			setIsLoading(true);
+
 			const params = new URLSearchParams();
 			params.set('user_id', localStorage.getItem('zabar_user_id')!);
-			params.set('package_id', '3');
+			params.set('package_id', `${packageId}`);
 			params.set('subscribe_period', `${value}`);
 			params.set('payment_method', `${PAYMENTS_METHOD_ID[paymentMethod]}`);
 			params.set('payment_order_id', paymentMethod);
@@ -47,7 +48,8 @@ const SubscriptionModal = () => {
 				method: 'post',
 				data: params,
 			});
-			push(data.payment_url);
+
+			router.push(data.payment_url);
 		} catch (error) {
 			setIsLoading(false)
 			console.error(error);
@@ -56,7 +58,7 @@ const SubscriptionModal = () => {
 
 	useEffect(() => {
 		setValue(
-			Number(localStorage.getItem('packet')) == 1 ? Number(localStorage.getItem('counter')) : 360
+			Number(localStorage.getItem('packet')) === 3 ? Number(localStorage.getItem('counter')) : 360
 		);
 		setPackageId(Number(localStorage.getItem('packet')));
 	}, [
@@ -98,14 +100,14 @@ const SubscriptionModal = () => {
 						<span>
 							{t('behind') + ' '}
 							{/* @ts-ignore */}
-							{packageId == 2 ? +packages?.items[1].price : +packages?.items[0].price * (value / 30) }
+							{packageId === 4 ? +packages?.items[1].price : +packages?.items[0].price * (value / 30) }
 							 $
 						</span>
 					</Title>
 					<Title className={styles.bottom} size="small">
 						<s>
 							{/* @ts-ignore */}
-							{packageId == 2 ? +packages?.items[1].price * 2 : +packages?.items[0].price * (value / 30) * 2}
+							{packageId === 4 ? +packages?.items[1].price * 2 : +packages?.items[0].price * (value / 30) * 2}
 							$
 						</s>
 					</Title>
@@ -126,7 +128,7 @@ const SubscriptionModal = () => {
 						<span className={styles.text}>{t('By card through bank acquiring')}</span>
 					</div>
 					{/* @ts-ignore */}
-					<span className={styles.right}>{packageId == 2 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
+					<span className={styles.right}>{packageId === 4 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
 				</button>
 				<button
 					className={classNames(
@@ -143,10 +145,10 @@ const SubscriptionModal = () => {
 						<span className={styles.text}>{t('Cryptocurrency')}</span>
 					</div>
 					{/* @ts-ignore */}
-					<span className={styles.right}>{packageId == 2 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
+					<span className={styles.right}>{packageId === 4 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
 				</button>
 			</div>
-			<ModalButton spinner={isLoading} className={styles.buy} onClick={buySubscription}>
+			<ModalButton disabled={isLoading} spinner={isLoading} className={styles.buy} onClick={buySubscription}>
 				{t('PAY')}
 			</ModalButton>
 		</Modal>

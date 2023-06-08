@@ -37,7 +37,7 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 
 	const handleSend = () => {
 		showSubscriptionModal(true);
-		localStorage.setItem('packet', isMonthPackage ? '1' : '2');
+		localStorage.setItem('packet', isMonthPackage ? '3' : '4');
 	};
 	return (
 		<>
