@@ -48,7 +48,6 @@ const SubscriptionModal = () => {
 				data: params,
 			});
 			push(data.payment_url);
-			return data;
 		} catch (error) {
 			setIsLoading(false)
 			console.error(error);
