@@ -17,6 +17,7 @@ import { PAYMENTS_METHOD_ID } from '@/constants/payments';
 
 const SubscriptionModal = () => {
 	const [paymentMethod, setPaymentMethod] = useState<keyof typeof PAYMENTS_METHOD_ID>('card');
+	const [isLoading, setIsLoading] = useState(false)
 	const [value, setValue] = useState<number>(0);
 	const [packageId, setPackageId] = useState<number>(0);
 	const [packages, setPackages] = useState();
@@ -30,6 +31,7 @@ const SubscriptionModal = () => {
 
 	const buySubscription = async () => {
 		try {
+			setIsLoading(true)
 			const params = new URLSearchParams();
 			params.set('user_id', localStorage.getItem('zabar_user_id')!);
 			params.set('package_id', '3');
@@ -48,6 +50,7 @@ const SubscriptionModal = () => {
 			push(data.payment_url);
 			return data;
 		} catch (error) {
+			setIsLoading(false)
 			console.error(error);
 		}
 	};
@@ -144,7 +147,7 @@ const SubscriptionModal = () => {
 					<span className={styles.right}>{packageId == 2 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
 				</button>
 			</div>
-			<ModalButton className={styles.buy} onClick={buySubscription}>
+			<ModalButton spinner={isLoading} className={styles.buy} onClick={buySubscription}>
 				{t('PAY')}
 			</ModalButton>
 		</Modal>
