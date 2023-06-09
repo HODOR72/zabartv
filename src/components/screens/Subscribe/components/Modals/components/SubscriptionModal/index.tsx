@@ -104,13 +104,6 @@ const SubscriptionModal = () => {
 							 $
 						</span>
 					</Title>
-					<Title className={styles.bottom} size="small">
-						<s>
-							{/* @ts-ignore */}
-							{packageId === 4 ? +packages?.items[1].price * 2 : +packages?.items[0].price * (value / 30) * 2}
-							$
-						</s>
-					</Title>
 				</div>
 			</ModalTitle>
 			<div className={styles.content}>
