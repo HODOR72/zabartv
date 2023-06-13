@@ -1,9 +1,14 @@
 .nav {
 	grid-area: nav;
+	overflow-x: scroll;
 
 	@media (max-width: 1500px) {
 		margin-top: 17px;
 	}
+}
+
+.nav::-webkit-scrollbar {
+	display: none;
 }
 
 .list {
@@ -43,6 +48,7 @@
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	transition: color 0.3s;
+	width: max-content;
 
 	@media (max-width: 576px) {
 		font-size: 14px;

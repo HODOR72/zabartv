@@ -12,47 +12,53 @@ import styles from './SubscriptionModal.module.scss';
 import classNames from 'classnames';
 import axios from '@/utils/axios';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import MasterCardVisa from '../../../../../../Icons/VisaMS.png';
 import { useTranslation } from 'next-i18next';
+import { PAYMENTS_METHOD_ID } from '@/constants/payments';
 
 const SubscriptionModal = () => {
-	const [paymentMethod, setPaymentMethod] = useState<string>('card');
+	const [paymentMethod, setPaymentMethod] = useState<keyof typeof PAYMENTS_METHOD_ID>('card');
+	const [isLoading, setIsLoading] = useState(false)
 	const [value, setValue] = useState<number>(0);
 	const [packageId, setPackageId] = useState<number>(0);
-
+	const [packages, setPackages] = useState();
 	const { isVisibleSubscriptionModal } = useTypedSelector((state: any) => state.modal);
 
 	const { showSubscriptionModal } = useTypedActions((state: any) => state.modal);
 
 	const handleClose = () => showSubscriptionModal(false);
-	const { push } = useRouter();
-	const { ModalTitle, ModalDesc, ModalButton } = Modal;
+	const router = useRouter();
+	const { ModalTitle, ModalButton } = Modal;
 
 	const buySubscription = async () => {
 		try {
+			setIsLoading(true);
+
+			const params = new URLSearchParams();
+			params.set('user_id', localStorage.getItem('zabar_user_id')!);
+			params.set('package_id', `${packageId}`);
+			params.set('subscribe_period', `${value}`);
+			params.set('payment_method', `${PAYMENTS_METHOD_ID[paymentMethod]}`);
+			params.set('payment_order_id', paymentMethod);
+
 			const { data } = await axios({
 				url: '/session/create-request',
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
 				},
 				method: 'post',
-				// УБРАТЬ 2 : 2 ПРИ РАБОТОСПОСОБНОСТИ КАРТЫ
-				data: `user_id=${localStorage.getItem('zabar_user_id')}&package_id=3&payment_method=${
-					paymentMethod === 'card' ? 2 : 2
-				}&payment_order_id=${paymentMethod}`,
+				data: params,
 			});
-			push(data.payment_url);
-			console.log(data);
-			return data;
+
+			router.push(data.payment_url);
 		} catch (error) {
+			setIsLoading(false)
 			console.error(error);
 		}
 	};
 
 	useEffect(() => {
 		setValue(
-			Number(localStorage.getItem('packet')) == 1 ? Number(localStorage.getItem('counter')) : 360
+			Number(localStorage.getItem('packet')) === 3 ? Number(localStorage.getItem('counter')) : 360
 		);
 		setPackageId(Number(localStorage.getItem('packet')));
 	}, [
@@ -62,6 +68,20 @@ const SubscriptionModal = () => {
 
 	const { t } = useTranslation();
 
+	const getPackages = async () => {
+		try {
+			const { data } = await axios.get('/packages');
+			setPackages(data);
+		} catch (e: unknown) {
+			console.error(e);
+		}
+	};
+
+	useEffect(() => {
+		getPackages();
+	}, []);
+
+	console.log();
 	return (
 		<Modal
 			// variant="grade"
@@ -71,14 +91,18 @@ const SubscriptionModal = () => {
 			className={styles.modal}
 		>
 			<ModalTitle className={styles.modal_title}>
-				<div className={styles.left}>{t('Select a Payment Method')}</div>
+				<div className={styles.left}>
+					{t('Select a Payment Method')}
+				</div>
 				<div className={styles.right}>
 					<Title className={styles.top} size="small">
-						{`${value !== 360 ? value + ' дней ' : 1 + ' год '}`}
-						<span>за {packageId == 2 ? 30 : (value / 30) * 10}€</span>
-					</Title>
-					<Title className={styles.bottom} size="small">
-						<s>{packageId == 2 ? 30 * 2 : (value / 30) * 10 * 2}€</s>
+						{`${value !== 360 ? value + t('days') : 1 + t('year')}`}
+						<span>
+							{t('behind') + ' '}
+							{/* @ts-ignore */}
+							{packageId === 4 ? +packages?.items[1].price : +packages?.items[0].price * (value / 30) }
+							 $
+						</span>
 					</Title>
 				</div>
 			</ModalTitle>
@@ -96,7 +120,8 @@ const SubscriptionModal = () => {
 						</span>
 						<span className={styles.text}>{t('By card through bank acquiring')}</span>
 					</div>
-					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
+					{/* @ts-ignore */}
+					<span className={styles.right}>{packageId === 4 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
 				</button>
 				<button
 					className={classNames(
@@ -110,16 +135,13 @@ const SubscriptionModal = () => {
 						<span className={styles.icon}>
 							<BitcoinIcon />
 						</span>
-						<span className={styles.img}>
-							<Image src={MasterCardVisa} width={31} height={36} />
-						</span>
-
-						<span className={styles.text}>{t('Cryptocurrency and card')}</span>
+						<span className={styles.text}>{t('Cryptocurrency')}</span>
 					</div>
-					<span className={styles.right}>{packageId == 2 ? 30 : (value / 30) * 10}€</span>
+					{/* @ts-ignore */}
+					<span className={styles.right}>{packageId === 4 ? +packages?.items[1].price  : +packages?.items[0].price * (value / 30)}$</span>
 				</button>
 			</div>
-			<ModalButton className={styles.buy} onClick={buySubscription}>
+			<ModalButton disabled={isLoading} spinner={isLoading} className={styles.buy} onClick={buySubscription}>
 				{t('PAY')}
 			</ModalButton>
 		</Modal>

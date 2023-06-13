@@ -14,7 +14,7 @@ export const Grade: FC<GradeProps> = ({ value, setValue }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.grades}>
-				{[...Array(10)].map((_, idx) => {
+				{[...Array(10)]?.map((_, idx) => {
 					const ratingValue = idx + 1;
 
 					const isActive = ratingValue <= (hover || value);

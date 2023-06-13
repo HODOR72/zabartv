@@ -14,7 +14,7 @@ export const VideoItem: FC<VideoItemProps> = ({ item }) => {
 	const { openPlayer, setUrl } = useTypedActions((state) => state.player);
 
 	const handleOpenPlayer = () => {
-		if (customerGroup) {
+		if (customerGroup == 2) {
 			return showSubscribeEmptyModal(true);
 		}
 		openPlayer(true);

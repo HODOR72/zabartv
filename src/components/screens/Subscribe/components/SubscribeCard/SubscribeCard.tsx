@@ -28,8 +28,6 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 		period,
 		visible,
 	} = card;
-	console.log(price, period);
-
 	const normalPrice = Number(price);
 	const isMonthPackage = period <= 30;
 
@@ -39,9 +37,8 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 
 	const handleSend = () => {
 		showSubscriptionModal(true);
-		localStorage.setItem('packet', isMonthPackage ? '1' : '2');
+		localStorage.setItem('packet', isMonthPackage ? '3' : '4');
 	};
-
 	return (
 		<>
 			{visible ? (
@@ -49,18 +46,18 @@ export const SubscribeCard: FC<SubscribeCardProps> = ({ card }) => {
 					<Title level="h2" size="medium" className={styles.title}>
 						{title}
 						&nbsp;{t('behind')}
-						<span>&nbsp;{normalPrice}€</span>
+						<span>&nbsp;{normalPrice}$</span>
 					</Title>
 					<p className={styles.desc}>
-						{isMonthPackage ? 'Или' : 'Единоразово'}
+						{isMonthPackage ? t('Or') : t('one time')}
 						&nbsp;{convertPrice()}
 						<span>
-							€&nbsp;
-							{isMonthPackage ? 'за 12 месяцев' : 'в месяц'}
+							$&nbsp;
+							{isMonthPackage ? t('for 12 months') : t('per month')}
 						</span>
 					</p>
 					{isMonthPackage && (
-						<Counter className={styles.counter} initialValue={30} caption="Дней" />
+						<Counter className={styles.counter} initialValue={30} caption={t('Days')} />
 					)}
 					<Button
 						onClick={handleSend}

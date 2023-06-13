@@ -66,7 +66,7 @@
 	opacity: 0;
 	visibility: hidden;
 	background-color: rgba(#080a12, 0.8);
-	transition: opacity 0.3s, visibility 0.3s;
+	transition: opacity 0.5s, visibility 0.5s;
 
 	@media (max-width: 576px) {
 		display: none;

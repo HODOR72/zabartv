@@ -33,15 +33,15 @@ export const Lang: FC<LangProps> = ({ className }) => {
 			className={classNames(styles.lang, active && styles.active, className)}
 		>
 			<ul className={classNames('list-reset', styles.list)}>
-				{items.map((el) => (
+				{items && items?.length && items?.map((el) => (
 					<li
 						key={el.locale}
-						className={classNames(styles.item, locale === el.locale && styles.selected)}
+						className={classNames(styles.item, locale === el?.locale && styles.selected)}
 					>
 						<NextLink href={asPath} locale={el.locale}>
 							<a className={styles.link}>
-								{el.icon}
-								<span className={styles.txt}>{el.txt}</span>
+								{el?.icon}
+								<span className={styles.txt}>{el?.txt}</span>
 							</a>
 						</NextLink>
 					</li>

@@ -45,7 +45,7 @@ export const SearchList: FC<SearchListProps> = ({ value }) => {
 	const List = (
 		<div className={styles.list}>
 			{data?.items.length! > 0 ? (
-				data?.items.map((item, idx) => <SearchItem key={idx} item={item} />)
+				data?.items?.map((item, idx) => <SearchItem key={idx} item={item} />)
 			) : (
 				<span className={styles.message}>{t('not found')}</span>
 			)}
@@ -57,7 +57,7 @@ export const SearchList: FC<SearchListProps> = ({ value }) => {
 			{!isLoading ? (
 				<div className={styles.list}>
 					{data?.items.length! > 0 ? (
-						data?.items.map((item, idx) => <SearchItem key={idx} item={item} />)
+						data?.items?.map((item, idx) => <SearchItem key={idx} item={item} />)
 					) : (
 						<span className={styles.message}>{t('not found')}</span>
 					)}

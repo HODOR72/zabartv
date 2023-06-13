@@ -13,6 +13,14 @@ const nextConfig = {
 		API_KEY: process.env.API_KEY,
 		API_URL: process.env.API_URL,
 	},
+	async rewrites() {
+		return [
+			{
+				source: '/api/:path*',
+				destination: 'https://zabartv.com/:path*',
+			},
+		];
+	},
 	webpack(config) {
 		config.module.rules.push({
 			test: /\.svg$/,

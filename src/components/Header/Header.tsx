@@ -14,7 +14,7 @@ interface HeaderProps {
 }
 
 export const HeaderActions = dynamic(
-	() => import('./components/Actions/Actions').then((mod) => mod.Actions),
+	() => import('./components/Actions/Actions').then((mod) => mod?.Actions),
 	{
 		ssr: false,
 	}

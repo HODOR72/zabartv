@@ -24,10 +24,10 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 	const { showAuthModal } = useTypedActions((state) => state.modal);
 
 	const { push } = useRouter();
-
+	const { t } = useTranslation();
 	const schema = Yup.object().shape({
-		email: Yup.string().email(incorrectlyFieldMessage).required(requiredFieldMessage),
-		password: Yup.string().min(6, shortPasswordMessage).required(requiredPasswordMessage),
+		email: Yup.string().email(t(incorrectlyFieldMessage)).required(t(requiredFieldMessage)),
+		password: Yup.string().min(6, t(shortPasswordMessage)).required(t(requiredPasswordMessage)),
 	});
 
 	const {
@@ -97,7 +97,7 @@ export const LoginContent = ({ authState }: { authState: string }) => {
 			console.error(error);
 		}
 	});
-	const { t } = useTranslation();
+
 	return (
 		<form action="#" noValidate onSubmit={handleLogin}>
 			<ModalInputs>

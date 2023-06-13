@@ -14,7 +14,7 @@ export const Nav: FC<NavProps> = ({ className }) => {
 	return (
 		<nav className={classNames(styles.nav, className)}>
 			<ul className={classNames('list-reset', styles.list)}>
-				{navMenu.map((item) => {
+				{navMenu?.map((item) => {
 					const { content, id, slug } = item;
 
 					return (

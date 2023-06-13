@@ -58,28 +58,18 @@
 			line-height: 22px;
 			display: block;
 		}
-
-		.bottom {
-			color: #0c101f;
-			margin-top: 5px;
-			line-height: 22px;
-			opacity: 0.5;
-		}
 	}
 }
 
 .content {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
+	gap: 1rem;
 
 	@media (max-width: 1024px) {
 		flex-direction: column;
 		align-items: center;
-
-		.twoBtn {
-			margin-top: 12px;
-		}
 	}
 
 	.paymentMethod {

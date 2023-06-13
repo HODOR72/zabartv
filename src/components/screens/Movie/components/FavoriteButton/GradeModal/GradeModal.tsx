@@ -1,11 +1,12 @@
 import { Modal } from '@/UI/Modal/Modal';
 import { Grade } from '@/UI/Grade/Grade';
-import { FC } from 'react';
+import { FC, useTransition } from 'react';
 import { useTypedActions } from '@/hooks/useTypedActions';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { IGradeResponse } from '@/types/IGrade';
 import { ICheckRating } from '@/types/ICheckRating';
 import axios from '@/utils/axios';
+import { useTranslation } from 'next-i18next';
 
 type Props = {
 	rating: number;
@@ -44,13 +45,13 @@ export const GradeModal: FC<Props> = ({ rating, setRating }: Props) => {
 	};
 
 	const { ModalTitle, ModalButton } = Modal;
-
+	const { t } = useTranslation();
 	return (
 		<Modal fullscreen variant="grade" open={isVisibleGradeModal} onClose={handleClose}>
-			<ModalTitle>Оцените фильм по 10-ти бальной шкале</ModalTitle>
+			<ModalTitle>{t('Rate the film on a 10-point scale')}</ModalTitle>
 			<Grade value={rating} setValue={setRating} />
 			<ModalButton onClick={handleGrade} disabled={rating === 0}>
-				Поставить оценку
+				{t('Rate')}
 			</ModalButton>
 		</Modal>
 	);

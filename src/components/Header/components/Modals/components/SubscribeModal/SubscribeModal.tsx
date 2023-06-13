@@ -6,11 +6,14 @@ import { SubscribeIcon } from '@/icons';
 import NextLink from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import axios from '@/utils/axios';
+import { useEffect, useState } from 'react';
 
 export const SubscribeModal = () => {
 	const { isVisibleSubscribeModal } = useTypedSelector((state) => state.modal);
 
 	const { showSubscribeModal, showAuthModal } = useTypedActions((state) => state.modal);
+	const [packages, setPackages] = useState();
 
 	const handleClose = () => showSubscribeModal(false);
 	const { push } = useRouter();
@@ -34,6 +37,19 @@ export const SubscribeModal = () => {
 		}
 	};
 
+	const getPackages = async () => {
+		try {
+			const { data } = await axios.get('/packages');
+			setPackages(data);
+		} catch (e: unknown) {
+			console.error(e);
+		}
+	};
+
+	useEffect(() => {
+		getPackages();
+	}, []);
+
 	return (
 		<Modal variant="gradient" open={isVisibleSubscribeModal} onClose={handleClose}>
 			<ModalTitle>{t('Subscribe ZabarTV')}</ModalTitle>
@@ -44,7 +60,8 @@ export const SubscribeModal = () => {
 			</ModalDesc>
 			<a onClick={handleSubmit}>
 				<ModalButton as="link" variant="white" icon={<SubscribeIcon />}>
-					{t('subscribe_button')} {t('behind')} 12€
+					{/* @ts-ignore */}
+					{t('subscribe_button')}
 				</ModalButton>
 			</a>
 		</Modal>

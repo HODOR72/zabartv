@@ -18,7 +18,7 @@ export const Purchases = () => {
 			const periodStartPath = convertTimestampToDate(el.start_date, 'DD.MM');
 			const periodFinishPath = convertTimestampToDate(el.finish_date, 'DD.MM');
 			const period = `с ${periodStartPath}. по ${periodFinishPath}`;
-			const price = `${Number(el.package_price)}€`;
+			const price = `${Number(el.package_price)}$`;
 
 			return { date, period, price };
 		});
@@ -30,7 +30,7 @@ export const Purchases = () => {
 		<>
 			{history &&
 				history.length &&
-				history.map((item: any, idx: any) => (
+				history?.map((item: any, idx: any) => (
 					<Fragment key={idx}>
 						{item?.hasOwnProperty('order_id') ? (
 							<div className={styles.table}>
@@ -43,13 +43,16 @@ export const Purchases = () => {
 									data.length &&
 									data?.map((item: any) => {
 										const { date, period, price } = item;
-
 										return (
 											<div key={date} className={styles.rows}>
 												<div className={classNames(styles.col, styles.date)}>
-													{date}
+													{date === 'Invalid Date' ? t('Date') : date}
 												</div>
-												<div className={styles.col}>{period}</div>
+												<div className={styles.col}>
+													{period === 'с Invalid Date. по Invalid Date'
+														? t('Period')
+														: period}
+												</div>
 												<div className={styles.col}>{price}</div>
 											</div>
 										);

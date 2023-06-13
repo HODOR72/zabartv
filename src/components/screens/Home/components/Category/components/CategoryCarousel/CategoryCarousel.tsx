@@ -6,19 +6,18 @@ import { Carousel } from '@/components/Carousel/Carousel';
 // components/UI
 import { MovieItem } from '@/UI/MovieItem/MovieItem';
 // types
-import { IMovieItem } from '@/types/index'
+import { IMovieItem } from '@/types/index';
 //
 import styles from './CategoryCarousel.module.scss';
-
-
 
 interface CategoryCarouselProps {
 	data: {
 		items: [IMovieItem[]];
 	};
+	txt: any;
 }
 
-export const CategoryCarousel: FC<CategoryCarouselProps> = ({ data }) => {
+export const CategoryCarousel: FC<CategoryCarouselProps> = ({ data, txt }) => {
 	const breakpoints = {
 		769: {
 			slidesPerView: 3,
@@ -36,7 +35,7 @@ export const CategoryCarousel: FC<CategoryCarouselProps> = ({ data }) => {
 
 					return (
 						<SwiperSlide className={styles.item} key={item?.id}>
-							<MovieItem item={item} />
+							<MovieItem item={item} txt={txt} />
 						</SwiperSlide>
 					);
 				})}

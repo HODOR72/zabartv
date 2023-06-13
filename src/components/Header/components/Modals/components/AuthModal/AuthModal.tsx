@@ -48,7 +48,7 @@ export const AuthModal = () => {
 				<RegisterContent authState={authState} />
 			</div>
 			<ModalLink onClick={handleShowForgotPasswordModal} as="button">
-				{'Forgot your password?'}
+				{t('Forgot your password?')}
 			</ModalLink>
 		</Modal>
 	);
